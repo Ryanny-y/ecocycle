@@ -11,7 +11,7 @@ import Login from './pages/auth/Login'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/ecocycle/',
     element: <App />,
     children: [
       {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       }
     ]
   }, {
-    path: '/admin/',
+    path: '/ecocycle/admin/',
     element: <AdminDashboard />,
     children: [
       {

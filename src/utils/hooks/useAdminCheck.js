@@ -8,9 +8,9 @@ const useAdminCheck = () => {
 
   useEffect(() => {
     if (userData?.roles.includes(5150) && isAuthenticated) {
-      navigate('/admin/overview');
+      navigate('/ecocycle/admin/overview');
     } else {
-      navigate('/')
+      navigate('/ecocycle')
     }
   }, [userData, isAuthenticated, navigate]);
 };

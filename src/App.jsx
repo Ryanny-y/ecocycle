@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <div>Home Page</div>
-      <Link to='/login'>Login</Link>
+      <Link to='/ecocycle/login'>Login</Link>
 
       <Outlet />
     </>

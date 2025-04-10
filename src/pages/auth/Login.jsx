@@ -25,8 +25,9 @@ const Login = () => {
         }
 
         const fetchData = async () => {
+          const url = import.meta.env.VITE_API_URL;
           try {
-            const response = await fetch('http://localhost:3500/auth', {
+            const response = await fetch(`${url}/auth`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ const Login = () => {
             setUserData(data.userData);
             setAccessToken(data.accessToken)
             setIsAuthenticated(true);
-            navigate('/admin/overview')
+            navigate('/ecocycle/admin/overview')
           } catch (error) {
             console.log(error);
           }

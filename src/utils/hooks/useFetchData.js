@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { authContext } from "../contexts/AuthProvider";
 
 const useFetchData = (url, refetch = '') => {
   const [ data, setData ] = useState(null);
   const [ loading, setLoading ] = useState(false);
   const [ error, setError ] = useState(null);
-  
+
+  const { accessToken } = useContext(authContext)
   
   useEffect(() => {
     const controller = new AbortController();
@@ -13,6 +15,9 @@ const useFetchData = (url, refetch = '') => {
     async function fetchData() {
       try {
         const response = await fetch(url, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
           signal: controller.signal,
           credentials: 'include'
         });
