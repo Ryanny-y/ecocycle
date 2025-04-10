@@ -13,6 +13,8 @@ const Login = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <form
       action=""
@@ -25,6 +27,7 @@ const Login = () => {
         }
 
         const fetchData = async () => {
+          setLoading(true);
           const url = import.meta.env.VITE_API_URL;
           try {
             const response = await fetch(`${url}/auth`, {
@@ -47,6 +50,7 @@ const Login = () => {
             setUserData(data.userData);
             setAccessToken(data.accessToken)
             setIsAuthenticated(true);
+            setLoading(false);
             navigate('/ecocycle/admin/overview')
           } catch (error) {
             console.log(error);
@@ -80,6 +84,7 @@ const Login = () => {
       />
 
       <button className="py-1 px-4 bg-blue-200">Login</button>
+      {loading && <p>Loading</p>}
     </form>
   );
 };
