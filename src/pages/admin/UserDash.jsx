@@ -21,11 +21,11 @@ const UserDash = () => {
 
   return (
     <section id="user_dashboard">
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex flex-col items-start  gap-2 sm:flex-row sm:items-center sm:justify-between mb-2">
         <h1 className="font-bold text-2xl tracking-wide">Records</h1>
 
         <button
-          className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"
+          className="bg-forest text-xs md:text-base hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"
           onClick={() => {
             setShowCreateRecord(true);
           }}

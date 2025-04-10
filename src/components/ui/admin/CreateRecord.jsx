@@ -70,6 +70,13 @@ const CreateRecord = ({ showCreateRecord, setShowCreateRecord, setRefetch }) => 
             
             const data = await response.json();
             setRefetch(prev => !prev)
+            setRecordData({
+              first_name: '',
+              middle_name: '',
+              last_name: '',
+              contact_number: '',
+              points: ''
+            })
             alert(data.message);
             
           } catch (error) {
@@ -113,7 +120,7 @@ const CreateRecord = ({ showCreateRecord, setShowCreateRecord, setRefetch }) => 
             </div>
 
             {/* Contact and Points */}
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <input
                 type="text"
                 id="contact_number"

@@ -15,9 +15,14 @@ const DashSideNav = ({ sideNavWidth }) => {
       path: '/ecocycle/admin/users'
     },
     {
+      icon: <box-icon box-icon type='solid' name='group' color="white" size="sm"></box-icon>,
+      path_name: 'Recycling Log',
+      path: '/ecocycle/admin/recyclelog'
+    },
+    {
       icon: <box-icon name='transfer-alt' color="white" size="sm"></box-icon>,
-      path_name: 'Transactions',
-      path: '/ecocycle/admin/transactions'
+      path_name: 'Exchange',
+      path: '/ecocycle/admin/exchange'
     },
     {
       icon: <box-icon type='solid' name='package' color="white" size="sm"></box-icon>,
@@ -28,10 +33,7 @@ const DashSideNav = ({ sideNavWidth }) => {
   ]
 
   return (
-    <nav className={`overflow-hidden ease-in-out bg-forest duration-500 py-5 px-4 text-white sticky top-0 h-svh self-start`} 
-    style={{
-      width: {sideNavWidth}
-    }}>
+    <nav className={`overflow-hidden md:min-w-52 ease-in-out bg-forest duration-500 py-5 px-4 text-white sticky top-0 h-svh self-start`} style={{ width: `${sideNavWidth}`}}>
       <div className='flex items-center gap-3 mb-10 justify-between'>
         <Link to="/ecocycle/" className="flex items-center gap-2">
           <img src="/ecocycle/logo.png" alt="EcoCycle Logo" className='h-11'/>
