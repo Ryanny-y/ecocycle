@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { authContext } from "../../../utils/contexts/AuthProvider";
 
-const CreateRecord = ({ showCreateRecord, setShowCreateRecord }) => {
+const CreateRecord = ({ showCreateRecord, setShowCreateRecord, setRefetch }) => {
 
   const { accessToken } = useContext(authContext);
   const [ recordData, setRecordData ] = useState({
@@ -54,7 +54,7 @@ const CreateRecord = ({ showCreateRecord, setShowCreateRecord }) => {
             const response = await fetch(`${url}/records`, {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': `Bearer ${accessToken}`
               },
               body: JSON.stringify({
@@ -69,8 +69,8 @@ const CreateRecord = ({ showCreateRecord, setShowCreateRecord }) => {
             }
             
             const data = await response.json();
-
-            alert(data);
+            setRefetch(prev => !prev)
+            alert(data.message);
             
           } catch (error) {
             console.log(error.status);

@@ -11,7 +11,7 @@ const DashboardLayout = () => {
 
   return (
     <div
-      className="grid h-svh"
+      className="grid relative"
       style={{
         gridTemplateColumns: "auto 1fr",
       }}
