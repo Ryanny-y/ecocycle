@@ -53,7 +53,7 @@ const Login = () => {
             setLoading(false);
             navigate('/ecocycle/admin/overview')
           } catch (error) {
-            console.log(error);
+            alert(error);
           }
         }
         fetchData();
