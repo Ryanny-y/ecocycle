@@ -7,7 +7,7 @@ const useAdminCheck = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userData?.userData?.roles.includes(5150) && isAuthenticated) {
+    if (userData?.roles.includes(5150) && isAuthenticated) {
       navigate('/admin/overview');
     } else {
       navigate('/')

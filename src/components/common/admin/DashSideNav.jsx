@@ -24,7 +24,7 @@ const DashSideNav = () => {
   ]
 
   return (
-    <nav className="bg-forest w-64 h-full py-5 px-4 text-white">
+    <nav className="bg-forest w-20 md:w-64 duration-500 h-full py-5 px-4 text-white">
       <Link to="/" className='flex items-center gap-3 mb-10'>
         <img src="/logo.png" alt="EcoCycle Logo" className='h-11'/>
         <h1 className='font-bold text-xl'>EcoCycle</h1>

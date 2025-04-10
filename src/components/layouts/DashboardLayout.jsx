@@ -8,9 +8,7 @@ import useAdminCheck from '../../utils/hooks/useAdminCheck';
 const DashboardLayout = () => {
 
   useAdminCheck();
-  const navigate = useNavigate();
 
-  
   return (
     <div
       className="grid h-svh"

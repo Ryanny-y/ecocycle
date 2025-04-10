@@ -6,7 +6,7 @@ import useAdminCheck from "../../utils/hooks/useAdminCheck";
 
 const Login = () => {
 
-  const { userData, setUserData, isAuthenticated, setIsAuthenticated } = useContext(authContext);
+  const { setUserData, setIsAuthenticated, setAccessToken } = useContext(authContext);
   const navigate = useNavigate();
   const [ userInfo, setUserInfo] = useState({
     username: "",
@@ -43,7 +43,8 @@ const Login = () => {
 
             console.log(data);
             
-            setUserData(data);
+            setUserData(data.userData);
+            setAccessToken(data.accessToken)
             setIsAuthenticated(true);
             navigate('/admin/overview')
           } catch (error) {

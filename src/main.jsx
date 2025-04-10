@@ -7,12 +7,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import UserDash from './pages/admin/UserDash'
 import AuthProvider from './utils/contexts/AuthProvider'
 import DashOverview from './pages/admin/DashOverview'
+import Login from './pages/auth/Login'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    
+    children: [
+      {
+        path: 'login',
+        element: <Login />
+      }
+    ]
   }, {
     path: '/admin/',
     element: <AdminDashboard />,
