@@ -1,8 +1,10 @@
+import { useState } from "react";
 import DashNavLink from "../../ui/admin/DashNavLink";
 import { Link } from "react-router";
 
 const DashSideNav = ({ sideNavWidth }) => {
-  
+  const [ mobileToggle, setMobileToggle ] = useState(false);
+
   const paths = [
     {
       icon: <box-icon box-icon type='solid' name='dashboard' color="white" size="sm"></box-icon>,
@@ -32,23 +34,124 @@ const DashSideNav = ({ sideNavWidth }) => {
     
   ]
 
+  const toggleMenu = (e) => {
+    const icon = e.currentTarget.querySelector('.icon');
+    const submenu = e.currentTarget?.nextElementSibling;
+    icon?.classList.toggle('rotate-180');
+    submenu?.classList.toggle('max-h-0');
+    submenu?.classList.toggle('max-h-[500px]');
+  }
+
   return (
-    <nav className={`overflow-hidden md:min-w-52 ease-in-out bg-forest duration-500 py-5 px-4 text-white sticky top-0 h-svh self-start`} style={{ width: `${sideNavWidth}`}}>
-      <div className='flex items-center gap-3 mb-10 justify-between'>
-        <Link to="/ecocycle/" className="flex items-center gap-2">
-          <img src="/ecocycle/logo.png" alt="EcoCycle Logo" className='h-11'/>
-          <h1 className='font-bold text-xl'>EcoCycle</h1>
-        </Link>
+    <section className="flex flex-col lg:flex-row bg-white">
+      {/* <!-- Mobile Header --> */}
+      <div className="flex justify-between items-center lg:hidden">
+          <div className="flex items-center ml-2 mt-2 mb-2">
+              <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="w-20 object-contain md:w-24"/>
+              <h1 className="font-bold ml-2 text-4xl text-[#336021] md:text-5xl">Eco-Cycle</h1>
+          </div>
+          <button id="menu-toggle" className="lg:hidden p-2 text-4xl md:text-5xl" onClick={() => setMobileToggle(true)}>☰</button>
       </div>
 
-      <ul className="flex flex-col gap-4">
-        {paths.map(path => (
-          <li key={path.path_name}>
-            <DashNavLink path={path}/>
-          </li>
-        ))}
-      </ul>
-    </nav>
+      {/* <!-- Overlay (mobile only) --> */}
+      <div id="overlay" className={`fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden ${mobileToggle ? '' : 'hidden'}`} onClick={() => setMobileToggle(false)}></div>
+
+      {/* <!-- Sidebar --> */}
+      <nav id="Mobile-menu" className={`
+          fixed
+          top-0 left-0
+          bottom-0
+          lg:pt-0
+          w-4/5
+          transform lg:transform-none
+          ${mobileToggle ? '' : '-translate-x-full'} lg:translate-x-0
+          md:w-3/5
+          bg-[#336021] backdrop-blur-sm lg:backdrop-blur-0
+          bg-opacity-90 lg:bg-opacity-100
+          z-50
+          transition-transform duration-300 ease-in-out
+          flex flex-col
+          lg:w-[${sideNavWidth}]
+      `}>
+          {/* <!-- Desktop Logo --> */}
+          <Link to="/ecocycle/" className="hidden lg:flex items-center p-4 border-b border-white/20">
+              <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-16"/>
+              <h1 className="font-bold ml-2 text-2xl text-white lg:text-4xl lg:font-bold">Eco-Cycle</h1>
+          </Link>
+
+          {/* <!-- Close Button (mobile only) --> */}
+          <div className="flex items-center justify-between lg:hidden py-3 px-4">
+            <div className="flex items-center">
+                <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="h-16"/>
+                <h1 className="font-bold ml-2 n text-4xl text-white md:text-3xl">Eco-Cycle</h1>
+            </div>
+            <span id="close-menu" className="text-white text-5xl cursor-pointer" onClick={() => setMobileToggle(false)}>×</span>
+          </div>
+
+          {/* <!-- Menu Content --> */}
+          <ul className="flex flex-col text-white w-full gap-y-4 px-3  overflow-y-auto">
+
+              {/* <!-- Basura-Eco Hub --> */}
+              <li>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                      <div className="flex items-center">
+                          <img src="/ecocycle/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
+                          <p className="text-lg ml-2 md:text-xl">Basura Eco Hub</p>
+                      </div>
+                      <div className="icon w-8 h-8 md:w-10 md:h-10">
+                        <box-icon name="chevron-down" className="w-full h-full" color="white"></box-icon>
+                      </div>
+                  </div>
+                  
+                  <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
+                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Records</Link>
+                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Create Record</Link>
+                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Update Record</Link>
+                  </div>
+              </li>
+
+              {/* <!-- EcoSwap --> */}
+              <li>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                      <div className="flex items-center">
+                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
+                          <p className="text-lg ml-2 md:text-xl">Basura Eco Hub</p>
+                      </div>
+                  </div>
+              </li>
+
+              {/* <!-- Green Pages --> */}
+              <li>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                      <div className="flex items-center">
+                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
+                          <p className="text-lg ml-2 md:text-xl">Green Pages</p>
+                      </div>
+                  </div>
+              </li>
+
+              {/* History */}
+              <li>
+                <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                    <div className="flex items-center">
+                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-10">
+                          <box-icon name='history' className="h-full w-full" color="white"></box-icon>
+                        </div>
+                        <p className="text-lg ml-2 md:text-xl">History</p>
+                    </div>
+                    <div className="icon w-8 h-8 md:w-10 md:h-10">
+                      <box-icon name="chevron-down" className="w-full h-full" color="white"></box-icon>
+                    </div>
+                </div>
+
+                <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Record History</Link>
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Swap History</Link>
+                </div>
+              </li>
+          </ul>
+      </nav>
+    </section>
   );
 };
 

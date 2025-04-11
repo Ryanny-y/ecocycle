@@ -6,36 +6,40 @@ import useAdminCheck from '../utils/hooks/useAdminCheck';
 
 const AdminDashboard = () => {
   useAdminCheck();
-  const [ sideNavWidth, setSideNavWidth ] = useState('11rem');
-  
-  useEffect(() => {
-    const changeWidth = () => {
-      if(window.innerWidth < 640) {
-        setSideNavWidth('5rem')
-      } else {
-        setSideNavWidth('11rem')
-      }
-    };
 
-    window.addEventListener('resize', changeWidth);
+  const [ mobileToggle, setMobileToggle ] = useState(false);
+  const [ sideNavWidth, setSideNavWidth ] = useState('300px');
+  
+  const [ windowSize, setWindowSize ] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = (e) => {
+      setWindowSize(window.innerWidth)      
+    }
+    window.addEventListener('resize', handleWindowResize)
 
     return () => {
-      window.removeEventListener('resize', changeWidth)
+      console.log('unmounts');
+      
+      window.removeEventListener('resize', handleWindowResize)
     }
-
-  }, []);
+  }, [])
 
   return (
     <div
-      className="flex">
+      className="flex flex-col lg:flex-row">
       <DashSideNav sideNavWidth={sideNavWidth}/>
 
-      <main className="py-2 px-3 flex flex-col gap-5 text-dark bg-light-1 duration-500" style={{width: `calc(100% - ${sideNavWidth})`}}>
+      <main className={`py-2 px-3 ml-auto flex flex-col gap-5 text-dark bg-light-1 duration-500`} 
+          style={{width: windowSize >= 1024  ? `calc(100% - ${sideNavWidth})` : '100%' }}
+          >
         <DashHeader />
 
         <Outlet />
       </main>
     </div>
+
+    // style={{ width: `calc(100% - ${sideNavWidth})`}}
   );
 };
 
