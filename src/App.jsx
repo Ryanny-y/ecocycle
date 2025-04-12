@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import useFetchData from './utils/hooks'
 
 const App = () => {
  const [ products, setProducts ] = useState([]);
   const url = import.meta.env.VITE_API_URL;
-  const { data, loading, error } = useFetch(`${url}/products`);
+  const { data, loading, error } = useFetchData(`${url}/products`);
 
  useEffect(() => {
     if(data && !error && !loading) {
