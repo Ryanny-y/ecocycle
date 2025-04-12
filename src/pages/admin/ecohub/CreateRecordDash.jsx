@@ -12,7 +12,6 @@ const CreateRecordDash = () => {
     age: "",
     contact_number: "",
     address: "",
-    points: "",
   });
 
   const handleField = (e) => {
@@ -27,9 +26,9 @@ const CreateRecordDash = () => {
   const handleCreateRecord = async (e) => {
     e.preventDefault();
 
-    const { first_name, middle_name, last_name, age, contact_number, address, points } = formField;
+    const { first_name, middle_name, last_name, age, contact_number, address } = formField;
 
-    if(!first_name || !middle_name || !last_name || !age || !points) {
+    if(!first_name || !middle_name || !last_name || !age) {
       alert('All Fields Are Required');
       return;
     }
@@ -62,7 +61,6 @@ const CreateRecordDash = () => {
         age: "",
         contact_number: "",
         address: "",
-        points: "",
       })
     } catch (error) {
       alert(error)
@@ -136,15 +134,6 @@ const CreateRecordDash = () => {
             placeholder="Address (Optional)"
             className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md"
             value={formField.address}
-            onChange={handleField}
-          />
-          <input
-            type="number"
-            name="points"
-            placeholder="Initial Points"
-            required
-            className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md"
-            value={formField.points}
             onChange={handleField}
           />
         </div>

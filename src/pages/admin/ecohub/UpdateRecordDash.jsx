@@ -7,11 +7,28 @@ const UpdateRecordDash = () => {
   const [formField, setFormField] = useState({
     record_id: "",
     last_name: "",
-    materials: [{
-      material: '',
-      weight: '',
-      unit: '',
-    }],
+    materials: [
+      {
+        id: '1',
+        material: 'Pet Bottles',
+        weight: 0,
+      },
+      {
+        id: '2',
+        material: 'Scrap Metal',
+        weight: 0,
+      },
+      {
+        id: '3',
+        material: 'Soft & Hard Plastics',
+        weight: 0,
+      },
+      {
+        id: '4',
+        material: 'Candy & Chichirya Wrapper',
+        weight: 0,
+      },
+    ],
     points: 0
   });
 
@@ -24,8 +41,30 @@ const UpdateRecordDash = () => {
     }));
   };
 
+  const handleMaterialChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedMaterials = [...formField.materials];
+  
+    updatedMaterials[index][name] = name === "weight"
+    ? value === "" ? "" : Number(value)
+    : value
+    
+    if(name === 'weight' && value < 0) {
+      alert('Invalid Weight');
+      return;
+    }
+    
+    setFormField((prev) => ({
+      ...prev,
+      materials: updatedMaterials,
+    }));
+  };
+
   const handleUpdateRecord = (e) => {
 
+    e.preventDefault();
+    console.log(formField);
+    
   };
 
   return (
@@ -61,55 +100,48 @@ const UpdateRecordDash = () => {
           />
 
           <div className="flex flex-col items-center gap-3">
-            <div className="grid grid-cols-4 gap-3 w-full">
+            <div className="grid grid-cols-4 items-center gap-3 w-full font-bold">
               <p className="col-span-2">Material</p>
               <p>Weight</p>
               <p>Unit</p>
             </div>
 
-            <div className="grid grid-cols-4 gap-3 w-full">
-              <input
-                type="number"
-                name="materials.weight"
-                placeholder="Weight"
-                required
-                className="p-2 bg-gray-1 w-14 md:w-20 shrink placeholder:text-gray-2 rounded-md"
-                value={formField.materials.material}
-                onChange={handleField}
-              />
-              <input
-                type="text"
-                name="materials.unit"
-                placeholder="Contact Number (Optional)"
-                className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md grow"
-                value={formField.materials.material}
-                onChange={handleField}
-              />
-            </div>
-          </div>
-            
+            {formField.materials.map((mat, index) => (
+              <div className="grid items-center grid-cols-4 gap-3 w-full" key={mat.id}>
+                <input
+                  type="text"
+                  name="material"
+                  placeholder={mat.material}
+                  required
+                  className="p-2 col-span-2 bg-gray-1 shrink placeholder:text-gray-2 rounded-md"
+                  value={mat.material}
+                  onChange={(e) => handleMaterialChange(index, e)}
+                />
 
-          <input
-            type="text"
-            name="address"
-            placeholder="Address (Optional)"
-            className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md"
-            value={formField.address}
-            onChange={handleField}
-          />
-          <input
-            type="number"
-            name="points"
-            placeholder="Initial Points"
-            required
-            className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md"
-            value={formField.points}
-            onChange={handleField}
-          />
+                <input
+                  type="number"
+                  name="weight"
+                  placeholder={mat.weight}
+                  className="p-2 bg-gray-1 placeholder:text-gray-2 rounded-md grow"
+                  value={mat.weight}
+                  onChange={(e) => handleMaterialChange(index, e)}
+                />
+                
+                <p className="font-semibold">Kilogram</p>
+              </div>))
+            }
+            
+          </div>
+          
+          <div className="grid grid-cols-4 gap-3 text-xl font-semibold">
+            <p className="col-span-3 ">Total Points</p>
+
+            <p>20 Points</p>
+          </div>
         </div>
 
         <button className="bg-forest self-center text-white py-2 px-5 rounded-md hover:bg-forest-hover">
-          Create Record
+          Confirm
         </button>
       </form>
     </section>

@@ -28,9 +28,9 @@ const RecordDash = () => {
       <div className="flex flex-col items-start gap-5 md:gap-20 sm:flex-row sm:items-center sm:justify-between mb-2">
         <h1 className="font-bold text-2xl tracking-wide">Records</h1>
 
-        <div className="grow md:grow-0 w-96 bg-white py-2 px-3 flex items-center gap-2">
-          <box-icon name='search'></box-icon>
-          <input type="text" placeholder="Search"  className="h-full bg-transparent"/>
+        <div className="w-full relative md:grow-0 md:w-96 bg-white px-3 flex rounded-md items-center gap-2">
+          <box-icon name='search' className="absolute"></box-icon>
+          <input type="text" placeholder="Search"  className="bg-transparent ml-8 outline-none rounded-md w-full py-2"/>
         </div>
       </div>
 
