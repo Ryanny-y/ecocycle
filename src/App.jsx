@@ -1,9 +1,10 @@
+import { Link } from 'react-router';
 
 const App = () => {
 
   return (
     <>
-      {/* <Outlet /> */}
+      <Link to="/ecocycle/admin_login">Login Here</Link>
     </>
   );
 };
