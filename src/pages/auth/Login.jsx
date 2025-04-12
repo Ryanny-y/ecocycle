@@ -52,7 +52,7 @@ const Login = () => {
         setTimeout(() => {
           setLoading(false);
         }, 1000);
-        navigate("/ecocycle/admin/overview");
+        navigate("/admin/overview");
       } catch (error) {
         alert(error);
         setLoading(false)
@@ -66,7 +66,7 @@ const Login = () => {
       <div className="flex flex-col md:flex-row items-center justify-betweeen py-20 md:py-28 px-10 md:px-16 bg-[#F4F2EF] md:bg-forest gap-5 md:gap-20 rounded-md shadow-lg shadow-black">
         <div className="flex flex-col md:flex-row items-center gap-3 grow">
           <img
-            src="/ecocycle/logos/logo.png"
+            src="/logos/logo.png"
             alt="nsts logo"
             className="h-24 md:h-32"
           />

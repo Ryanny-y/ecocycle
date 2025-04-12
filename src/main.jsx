@@ -16,13 +16,13 @@ import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
 
 const router = createBrowserRouter([
   {
-    path: '/ecocycle/',
+    path: '/',
     element: <App />,
   }, {
-    path: '/ecocycle/admin_login',
+    path: '/admin_login',
     element: <Login />
   }, {
-    path: '/ecocycle/admin/',
+    path: '/admin/',
     element: <AdminDashboard />,
     children: [
       {

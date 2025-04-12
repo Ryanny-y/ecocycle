@@ -18,7 +18,7 @@ const DashSideNav = () => {
       {/* <!-- Mobile Header --> */}
       <div className="flex justify-between items-center lg:hidden">
           <div className="flex items-center ml-2 mt-2 mb-2">
-              <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="w-20 object-contain md:w-24"/>
+              <img src="/logos/logo.png" alt="NSTP Logo" className="w-20 object-contain md:w-24"/>
               <h1 className="font-bold ml-2 text-4xl text-white md:text-5xl">Eco-Cycle</h1>
           </div>
           <button id="menu-toggle" className={`${mobileToggle ? 'hidden' : 'block'} lg:hidden p-2 text-4xl md:text-5xl text-white`} onClick={() => setMobileToggle(true)}>☰</button>
@@ -45,15 +45,15 @@ const DashSideNav = () => {
           lg:w-[300px]
       `}>
           {/* <!-- Desktop Logo --> */}
-          <Link to="/ecocycle/" className="hidden lg:flex items-center p-4 border-b border-white/20">
-              <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-16"/>
+          <Link to="/" className="hidden lg:flex items-center p-4 border-b border-white/20">
+              <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-16"/>
               <h1 className="font-bold ml-2 text-2xl text-white lg:text-4xl lg:font-bold">Eco-Cycle</h1>
           </Link>
 
           {/* <!-- Close Button (mobile only) --> */}
           <div className="flex items-center justify-between lg:hidden py-3 px-4">
             <div className="flex items-center">
-                <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="h-16"/>
+                <img src="/logos/logo.png" alt="NSTP Logo" className="h-16"/>
                 <h1 className="font-bold ml-2 n text-4xl text-white md:text-3xl">Eco-Cycle</h1>
             </div>
             <span id="close-menu" className="text-white text-5xl cursor-pointer" onClick={() => setMobileToggle(false)}>×</span>
@@ -64,7 +64,7 @@ const DashSideNav = () => {
 
               {/* <!-- Overview --> */}
               <li>
-                  <Link to="/ecocycle/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
+                  <Link to="/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                         <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
                           <box-icon type="solid" name='dashboard' className="h-full w-full" color="white"></box-icon>
@@ -78,7 +78,7 @@ const DashSideNav = () => {
               <li>
                   <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
+                          <img src="/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">Basura Eco Hub</p>
                       </div>
                       <div className="icon w-8 h-8 md:w-10 md:h-10">
@@ -87,9 +87,9 @@ const DashSideNav = () => {
                   </div>
                   
                   <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                      <Link to="/ecocycle/admin/ecohub/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Records</Link>
-                      <Link to="/ecocycle/admin/ecohub/create_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Create Record</Link>
-                      <Link to="/ecocycle/admin/ecohub/update_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Update Record</Link>
+                      <Link to="/admin/ecohub/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Records</Link>
+                      <Link to="/admin/ecohub/create_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Create Record</Link>
+                      <Link to="/admin/ecohub/update_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Update Record</Link>
                   </div>
               </li>
 
@@ -97,7 +97,7 @@ const DashSideNav = () => {
               <li>
                   <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
+                          <img src="/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
                       </div>
                   </div>
@@ -107,7 +107,7 @@ const DashSideNav = () => {
               <li>
                   <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
+                          <img src="/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">Green Pages</p>
                       </div>
                   </div>

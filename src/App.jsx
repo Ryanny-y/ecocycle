@@ -4,7 +4,7 @@ const App = () => {
 
   return (
     <>
-      <Link to="/ecocycle/admin_login">Login Here</Link>
+      <Link to="/admin_login">Login Here</Link>
     </>
   );
 };
