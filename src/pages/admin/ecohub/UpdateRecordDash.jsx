@@ -75,11 +75,36 @@ const UpdateRecordDash = () => {
       return;
     }
 
+    const reqBody = {
+      ...formField,
+      materials: formField.materials.map(mat => ({ material: mat.id, weight: mat.weight }))
+    }
     try {
       const url = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${url}/records/${formField.record_id}`, {
+        method: "PATCH",
+        headers: {
+          'Content-Type': "application/json; charset=utf-8",
+          "Authorization": `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(reqBody),
+        credentials: "include"
+      })
       
+      if(!response.ok) {
+        throw new Error(response.status + response.statusText);
+      }
+
+      const data = await response.json();
+      alert(data.message);
+      setFormField((prev) => ({
+        ...prev,
+        record_id: "",
+        last_name: "",
+        points: 0
+      }))
     } catch (error) {
-      
+      alert(error);
     }
   };  
 
@@ -127,6 +152,7 @@ const UpdateRecordDash = () => {
                 <input
                   type="text"
                   name="material"
+                  disabled
                   placeholder={mat.material}
                   required
                   className="p-2 col-span-2 bg-gray-1 shrink placeholder:text-gray-2 rounded-md"
