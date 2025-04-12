@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import useFetchData from './utils/hooks'
+import useFetchData from './utils/hooks/useFetchData'
 
 const App = () => {
  const [ products, setProducts ] = useState([]);
