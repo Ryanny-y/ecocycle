@@ -35,8 +35,11 @@ const Login = () => {
           body: JSON.stringify(userInfo),
           credentials: "include",
         });
-
+        
+        console.log(url);
         if (!response.ok) {
+          console.log(`In Responsse: ${response}`);
+          
           if(response.status && response.statusText === 'Unauthorized') {
             throw new Error(`Username or Password is Incorrect`);
           }
@@ -45,17 +48,20 @@ const Login = () => {
         }
 
         const data = await response.json();
-
+        
+        console.log("Works Here");
+        
         setUserData(data.userData);
         setAccessToken(data.accessToken);
         setIsAuthenticated(true);
-        console.log(url);
         
         setTimeout(() => {
           setLoading(false);
         }, 1000);
         navigate("/admin/overview");
       } catch (error) {
+        console.log("Error Here");
+        
         console.log(error);
         
         alert(error);
