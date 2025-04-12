@@ -49,11 +49,15 @@ const Login = () => {
         setUserData(data.userData);
         setAccessToken(data.accessToken);
         setIsAuthenticated(true);
+        console.log(url);
+        
         setTimeout(() => {
           setLoading(false);
         }, 1000);
         navigate("/admin/overview");
       } catch (error) {
+        console.log(error);
+        
         alert(error);
         setLoading(false)
       }

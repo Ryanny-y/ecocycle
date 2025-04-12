@@ -24,7 +24,7 @@ const RecordDash = () => {
   }, [data, loading, error, refetch]);
 
   return (
-    <section id="user_dashboard" className="">
+    <section id="record_dashboard">
       <div className="flex flex-col items-start gap-5 md:gap-20 sm:flex-row sm:items-center sm:justify-between mb-2">
         <h1 className="font-bold text-2xl tracking-wide">Records</h1>
 
