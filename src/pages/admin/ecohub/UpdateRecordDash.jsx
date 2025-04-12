@@ -1,36 +1,33 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../utils/contexts/AuthProvider";
+import { MaterialContext } from '../../../utils/contexts/MaterialProvider';
 
 const UpdateRecordDash = () => {
   const { accessToken } = useContext(authContext) 
   
+  const { materials } = useContext(MaterialContext);
+  
   const [formField, setFormField] = useState({
     record_id: "",
     last_name: "",
-    materials: [
-      {
-        id: '1',
-        material: 'Pet Bottles',
-        weight: 0,
-      },
-      {
-        id: '2',
-        material: 'Scrap Metal',
-        weight: 0,
-      },
-      {
-        id: '3',
-        material: 'Soft & Hard Plastics',
-        weight: 0,
-      },
-      {
-        id: '4',
-        material: 'Candy & Chichirya Wrapper',
-        weight: 0,
-      },
-    ],
+    materials: [],
     points: 0
   });
+
+  useEffect(() => {
+    if(materials.length > 0) {
+      const updatedMaterials = materials.map(material => ({
+        id: material._id,
+        material: material.name,
+        weight: 0
+      }));
+
+      setFormField(prev => ({
+        ...prev,
+        materials: updatedMaterials
+      }))
+    }
+  }, [materials])
 
   const handleField = (e) => {
     const { name, value } = e.target;
@@ -53,19 +50,38 @@ const UpdateRecordDash = () => {
       alert('Invalid Weight');
       return;
     }
-    
+
+    const newTotal = updatedMaterials
+    .map(material => {
+      const matchingMaterial = materials.find(mat => mat._id === material.id);
+      return (material.weight > 0 && matchingMaterial)
+        ? material.weight * matchingMaterial.points_per_kg
+        : 0;
+    })
+    .reduce((acc, cur) => acc + cur , 0);
+
     setFormField((prev) => ({
       ...prev,
       materials: updatedMaterials,
+      points: newTotal
     }));
   };
 
-  const handleUpdateRecord = (e) => {
-
+  const handleUpdateRecord = async (e) => {
     e.preventDefault();
-    console.log(formField);
-    
-  };
+
+    if(!formField.record_id || !formField.last_name) {
+      alert('Record ID and Last Name are required!');
+      return;
+    }
+
+    try {
+      const url = import.meta.env.VITE_API_URL;
+      
+    } catch (error) {
+      
+    }
+  };  
 
   return (
     <section className="flex flex-col gap-2">
@@ -136,7 +152,7 @@ const UpdateRecordDash = () => {
           <div className="grid grid-cols-4 gap-3 text-xl font-semibold">
             <p className="col-span-3 ">Total Points</p>
 
-            <p>20 Points</p>
+            <p>{formField.points.toFixed(2)}</p>
           </div>
         </div>
 
