@@ -18,8 +18,6 @@ const AdminDashboard = () => {
     window.addEventListener('resize', handleWindowResize)
 
     return () => {
-      console.log('unmounts');
-      
       window.removeEventListener('resize', handleWindowResize)
     }
   }, [])
