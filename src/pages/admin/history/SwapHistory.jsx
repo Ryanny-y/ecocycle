@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ExchangeDash = () => {
+const SwapHistory = () => {
 
   const [ exhanges, setExchanges ] = useState([]);
 
@@ -55,4 +55,4 @@ const ExchangeDash = () => {
   )
 };
 
-export default ExchangeDash;
+export default SwapHistory;

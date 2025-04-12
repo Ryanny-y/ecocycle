@@ -9,8 +9,8 @@ import AuthProvider from './utils/contexts/AuthProvider'
 import DashOverview from './pages/admin/DashOverview'
 import Login from './pages/auth/Login'
 import ProductsDash from './pages/admin/ProductsDash'
-import RecyclingLogDash from './pages/admin/RecyclingLogDash'
-import ExchangeDash from './pages/admin/ExchangeDash'
+import RecordHistory from './pages/admin/history/RecordHistory'
+import SwapHistory from './pages/admin/history/SwapHistory'
 import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
 import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
 
@@ -43,11 +43,11 @@ const router = createBrowserRouter([
       },
       // {
       //   path: 'recyclelog',
-      //   element: <RecyclingLogDash />
+      //   element: <RecordHistory />
       // },
       // {
       //   path: 'exchange',
-      //   element: <ExchangeDash />
+      //   element: <SwapHistory />
       // },
       // {
       //   path: 'products',

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const RecyclingLogDash = () => {
+const RecordHistory = () => {
 
   const [ recycleSubmissions, setRecycleSubmissions ] = useState([]);
 
@@ -55,4 +55,4 @@ const RecyclingLogDash = () => {
   )
 };
 
-export default RecyclingLogDash;
+export default RecordHistory;
