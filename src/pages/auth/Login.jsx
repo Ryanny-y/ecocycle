@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { authContext } from "../../utils/contexts/AuthProvider";
 import { useNavigate } from "react-router";
-import useAdminCheck from "../../utils/hooks/useAdminCheck";
 
 const Login = () => {
   const { setUserData, setIsAuthenticated, setAccessToken } =
