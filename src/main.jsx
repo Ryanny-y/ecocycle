@@ -4,13 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import AdminDashboard from './pages/AdminDashboard'
 import './index.css'
 import App from './App'
-import RecordDash from './pages/admin/RecordDash'
+import RecordDash from './pages/admin/ecohub/RecordDash'
 import AuthProvider from './utils/contexts/AuthProvider'
 import DashOverview from './pages/admin/DashOverview'
 import Login from './pages/auth/Login'
 import ProductsDash from './pages/admin/ProductsDash'
 import RecyclingLogDash from './pages/admin/RecyclingLogDash'
 import ExchangeDash from './pages/admin/ExchangeDash'
+import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
+import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,15 @@ const router = createBrowserRouter([
       {
         path: 'ecohub/records',
         element: <RecordDash />
-      }
+      },
+      {
+        path: 'ecohub/create_record',
+        element: <CreateRecordDash />
+      },
+      {
+        path: 'ecohub/update_record',
+        element: <UpdateRecordDash />
+      },
       // {
       //   path: 'recyclelog',
       //   element: <RecyclingLogDash />

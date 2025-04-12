@@ -64,7 +64,7 @@ const DashSideNav = () => {
 
               {/* <!-- Overview --> */}
               <li>
-                  <Link to="/ecocycle/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                  <Link to="/ecocycle/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                         <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
                           <box-icon type="solid" name='dashboard' className="h-full w-full" color="white"></box-icon>
@@ -76,7 +76,7 @@ const DashSideNav = () => {
 
               {/* <!-- Basura-Eco Hub --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                           <img src="/ecocycle/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">Basura Eco Hub</p>
@@ -87,15 +87,15 @@ const DashSideNav = () => {
                   </div>
                   
                   <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                      <Link to="/ecocycle/admin/ecohub/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Records</Link>
-                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Create Record</Link>
-                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Update Record</Link>
+                      <Link to="/ecocycle/admin/ecohub/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Records</Link>
+                      <Link to="/ecocycle/admin/ecohub/create_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Create Record</Link>
+                      <Link to="/ecocycle/admin/ecohub/update_record" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Update Record</Link>
                   </div>
               </li>
 
               {/* <!-- EcoSwap --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                           <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
@@ -105,7 +105,7 @@ const DashSideNav = () => {
 
               {/* <!-- Green Pages --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                           <img src="/ecocycle/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">Green Pages</p>
@@ -115,7 +115,7 @@ const DashSideNav = () => {
 
               {/* History */}
               <li>
-                <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                     <div className="flex items-center">
                         <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
                           <box-icon name='history' className="h-full w-full" color="white"></box-icon>
@@ -128,8 +128,8 @@ const DashSideNav = () => {
                 </div>
 
                 <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Record History</Link>
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Swap History</Link>
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Record History</Link>
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Swap History</Link>
                 </div>
               </li>
           </ul>

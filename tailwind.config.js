@@ -11,7 +11,10 @@ export default {
         'forest': "#336021",
         'rust': '#D98E04',
         'dark': '#202020',
-        'light-1': '#eeeeee'
+        'light-1': '#eeeeee',
+        'gray-1': '#D9D9D9',
+        'gray-2': '#565454',
+        'forest-hover': "#3e7a25",
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif']
@@ -20,7 +23,7 @@ export default {
         '18': '72px',
         '100': '450px',
         '700': '700px'
-      }
+      },
     },
   },
   plugins: [],

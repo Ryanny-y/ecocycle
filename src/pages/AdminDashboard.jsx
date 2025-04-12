@@ -7,11 +7,11 @@ import useAdminCheck from '../utils/hooks/useAdminCheck';
 const AdminDashboard = () => {
   useAdminCheck();
 
-  const [ mobileToggle, setMobileToggle ] = useState(false);
-  
   const [ windowSize, setWindowSize ] = useState(window.innerWidth);
 
   useEffect(() => {
+    document.body.style.backgroundColor = '#eeeeee';
+
     const handleWindowResize = (e) => {
       setWindowSize(window.innerWidth)      
     }
@@ -27,7 +27,7 @@ const AdminDashboard = () => {
       className="flex flex-col lg:flex-row">
       <DashSideNav/>
 
-      <main className={`ml-auto flex flex-col text-dark bg-light-1 duration-500`} 
+      <main className={`ml-auto flex flex-col text-dark  duration-500`} 
           style={{width: windowSize >= 1024  ? `calc(100% - 300px)` : '100%' }}
           >
         <DashHeader />

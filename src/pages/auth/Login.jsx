@@ -30,7 +30,7 @@ const Login = () => {
         const response = await fetch(`${url}/auth`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
           },
           body: JSON.stringify(userInfo),
           credentials: "include",
@@ -63,7 +63,7 @@ const Login = () => {
 
   return (
     <main className="h-svh flex items-center justify-center relative">
-      <div className="flex flex-col md:flex-row items-center justify-betweeen py-28 px-10 md:px-16 bg-[#F4F2EF] md:bg-forest gap-5 md:gap-20 rounded-md shadow-lg shadow-black">
+      <div className="flex flex-col md:flex-row items-center justify-betweeen py-20 md:py-28 px-10 md:px-16 bg-[#F4F2EF] md:bg-forest gap-5 md:gap-20 rounded-md shadow-lg shadow-black">
         <div className="flex flex-col md:flex-row items-center gap-3 grow">
           <img
             src="/ecocycle/logos/logo.png"
@@ -95,6 +95,7 @@ const Login = () => {
             <div className="flex flex-col items-center justify-center gap-y-4 w-full">
               <input
                 type="text"
+                required
                 value={userInfo.username}
                 onChange={(e) => {
                   setUserInfo(prev => ({
@@ -103,10 +104,11 @@ const Login = () => {
                   }))
                 } }
                 placeholder="Username"
-                className="rounded-md bg-[#D9D9D9] p-2 px-5 w-full outline-none"
+                className="rounded-md bg-gray-1 p-2 px-5 w-full outline-none"
               />
               <input
                 type="password"
+                required
                 value={userInfo.password}
                 onChange={(e) => {
                   setUserInfo(prev => ({
@@ -115,7 +117,7 @@ const Login = () => {
                   }))
                 } }
                 placeholder="Password"
-                className="rounded-md bg-[#D9D9D9] p-2 px-5 w-full outline-none"
+                className="rounded-md bg-gray-1 p-2 px-5 w-full outline-none"
               />
             </div>
 
