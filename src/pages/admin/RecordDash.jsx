@@ -3,7 +3,7 @@ import CreateRecord from "../../components/ui/admin/CreateRecord";
 import useFetchData from "../../utils/hooks/useFetchData";
 import dayjs from 'https://unpkg.com/dayjs@1.11.13/esm/index.js';
 
-const UserDash = () => {
+const RecordDash = () => {
   const [showCreateRecord, setShowCreateRecord] = useState(false);
   const [records, setRecords] = useState([]);
   const [refetch, setRefetch] = useState(true);
@@ -20,18 +20,14 @@ const UserDash = () => {
   }, [data, loading, error, refetch]);
 
   return (
-    <section id="user_dashboard">
-      <div className="flex flex-col items-start  gap-2 sm:flex-row sm:items-center sm:justify-between mb-2">
+    <section id="user_dashboard" className="">
+      <div className="flex flex-col items-start gap-5 md:gap-20 sm:flex-row sm:items-center sm:justify-between mb-2">
         <h1 className="font-bold text-2xl tracking-wide">Records</h1>
 
-        <button
-          className="bg-forest text-xs md:text-base hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"
-          onClick={() => {
-            setShowCreateRecord(true);
-          }}
-        >
-          Create New Record
-        </button>
+        <div className="grow md:grow-0 w-96 bg-white py-2 px-3 flex items-center gap-2">
+          <box-icon name='search'></box-icon>
+          <input type="text" placeholder="Search"  className="h-full bg-transparent"/>
+        </div>
       </div>
 
       <div>
@@ -82,4 +78,4 @@ const UserDash = () => {
   );
 };
 
-export default UserDash;
+export default RecordDash;

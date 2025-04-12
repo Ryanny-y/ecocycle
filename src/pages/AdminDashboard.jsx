@@ -8,7 +8,6 @@ const AdminDashboard = () => {
   useAdminCheck();
 
   const [ mobileToggle, setMobileToggle ] = useState(false);
-  const [ sideNavWidth, setSideNavWidth ] = useState('300px');
   
   const [ windowSize, setWindowSize ] = useState(window.innerWidth);
 
@@ -28,18 +27,20 @@ const AdminDashboard = () => {
   return (
     <div
       className="flex flex-col lg:flex-row">
-      <DashSideNav sideNavWidth={sideNavWidth}/>
+      <DashSideNav/>
 
-      <main className={`py-2 px-3 ml-auto flex flex-col gap-5 text-dark bg-light-1 duration-500`} 
-          style={{width: windowSize >= 1024  ? `calc(100% - ${sideNavWidth})` : '100%' }}
+      <main className={`ml-auto flex flex-col text-dark bg-light-1 duration-500`} 
+          style={{width: windowSize >= 1024  ? `calc(100% - 300px)` : '100%' }}
           >
         <DashHeader />
+        
+        <div className="p-5">
+          <Outlet />
 
-        <Outlet />
+        </div>
       </main>
     </div>
 
-    // style={{ width: `calc(100% - ${sideNavWidth})`}}
   );
 };
 

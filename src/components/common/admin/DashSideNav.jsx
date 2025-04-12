@@ -2,37 +2,8 @@ import { useState } from "react";
 import DashNavLink from "../../ui/admin/DashNavLink";
 import { Link } from "react-router";
 
-const DashSideNav = ({ sideNavWidth }) => {
+const DashSideNav = () => {
   const [ mobileToggle, setMobileToggle ] = useState(false);
-
-  const paths = [
-    {
-      icon: <box-icon box-icon type='solid' name='dashboard' color="white" size="sm"></box-icon>,
-      path_name: 'Overview',
-      path: '/ecocycle/admin/overview'
-    },
-    {
-      icon: <box-icon box-icon type='solid' name='group' color="white" size="sm"></box-icon>,
-      path_name: 'Users',
-      path: '/ecocycle/admin/users'
-    },
-    {
-      icon: <box-icon box-icon type='solid' name='group' color="white" size="sm"></box-icon>,
-      path_name: 'Recycling Log',
-      path: '/ecocycle/admin/recyclelog'
-    },
-    {
-      icon: <box-icon name='transfer-alt' color="white" size="sm"></box-icon>,
-      path_name: 'Exchange',
-      path: '/ecocycle/admin/exchange'
-    },
-    {
-      icon: <box-icon type='solid' name='package' color="white" size="sm"></box-icon>,
-      path_name: 'Products',
-      path: '/ecocycle/admin/products'
-    },
-    
-  ]
 
   const toggleMenu = (e) => {
     const icon = e.currentTarget.querySelector('.icon');
@@ -43,14 +14,14 @@ const DashSideNav = ({ sideNavWidth }) => {
   }
 
   return (
-    <section className="flex flex-col lg:flex-row bg-white">
+    <section className="flex flex-col lg:flex-row bg-forest">
       {/* <!-- Mobile Header --> */}
       <div className="flex justify-between items-center lg:hidden">
           <div className="flex items-center ml-2 mt-2 mb-2">
               <img src="/ecocycle/logos/logo.png" alt="NSTP Logo" className="w-20 object-contain md:w-24"/>
-              <h1 className="font-bold ml-2 text-4xl text-[#336021] md:text-5xl">Eco-Cycle</h1>
+              <h1 className="font-bold ml-2 text-4xl text-white md:text-5xl">Eco-Cycle</h1>
           </div>
-          <button id="menu-toggle" className="lg:hidden p-2 text-4xl md:text-5xl" onClick={() => setMobileToggle(true)}>☰</button>
+          <button id="menu-toggle" className={`${mobileToggle ? 'hidden' : 'block'} lg:hidden p-2 text-4xl md:text-5xl text-white`} onClick={() => setMobileToggle(true)}>☰</button>
       </div>
 
       {/* <!-- Overlay (mobile only) --> */}
@@ -66,12 +37,12 @@ const DashSideNav = ({ sideNavWidth }) => {
           transform lg:transform-none
           ${mobileToggle ? '' : '-translate-x-full'} lg:translate-x-0
           md:w-3/5
-          bg-[#336021] backdrop-blur-sm lg:backdrop-blur-0
+          bg-forest backdrop-blur-sm lg:backdrop-blur-0
           bg-opacity-90 lg:bg-opacity-100
           z-50
           transition-transform duration-300 ease-in-out
           flex flex-col
-          lg:w-[${sideNavWidth}]
+          lg:w-[300px]
       `}>
           {/* <!-- Desktop Logo --> */}
           <Link to="/ecocycle/" className="hidden lg:flex items-center p-4 border-b border-white/20">
@@ -89,14 +60,26 @@ const DashSideNav = ({ sideNavWidth }) => {
           </div>
 
           {/* <!-- Menu Content --> */}
-          <ul className="flex flex-col text-white w-full gap-y-4 px-3  overflow-y-auto">
+          <ul className="flex flex-col text-white w-full px-3  overflow-y-auto">
+
+              {/* <!-- Overview --> */}
+              <li>
+                  <Link to="/ecocycle/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
+                      <div className="flex items-center">
+                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
+                          <box-icon type="solid" name='dashboard' className="h-full w-full" color="white"></box-icon>
+                        </div>
+                        <p className="text-sm ml-2 md:text-lg">Overview</p>
+                      </div>
+                  </Link>
+              </li>
 
               {/* <!-- Basura-Eco Hub --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
-                          <p className="text-lg ml-2 md:text-xl">Basura Eco Hub</p>
+                          <img src="/ecocycle/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
+                          <p className="text-sm ml-2 md:text-lg">Basura Eco Hub</p>
                       </div>
                       <div className="icon w-8 h-8 md:w-10 md:h-10">
                         <box-icon name="chevron-down" className="w-full h-full" color="white"></box-icon>
@@ -104,40 +87,40 @@ const DashSideNav = ({ sideNavWidth }) => {
                   </div>
                   
                   <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Records</Link>
-                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Create Record</Link>
-                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Update Record</Link>
+                      <Link to="/ecocycle/admin/ecohub/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Records</Link>
+                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Create Record</Link>
+                      <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Update Record</Link>
                   </div>
               </li>
 
               {/* <!-- EcoSwap --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
-                          <p className="text-lg ml-2 md:text-xl">Basura Eco Hub</p>
+                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
+                          <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
                       </div>
                   </div>
               </li>
 
               {/* <!-- Green Pages --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <img src="/ecocycle/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 lg:w-16"/>
-                          <p className="text-lg ml-2 md:text-xl">Green Pages</p>
+                          <img src="/ecocycle/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
+                          <p className="text-sm ml-2 md:text-lg">Green Pages</p>
                       </div>
                   </div>
               </li>
 
               {/* History */}
               <li>
-                <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2" onClick={toggleMenu}>
+                <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-[#3e7a25] duration-300" onClick={toggleMenu}>
                     <div className="flex items-center">
-                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-10">
+                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
                           <box-icon name='history' className="h-full w-full" color="white"></box-icon>
                         </div>
-                        <p className="text-lg ml-2 md:text-xl">History</p>
+                        <p className="text-sm ml-2 md:text-lg">History</p>
                     </div>
                     <div className="icon w-8 h-8 md:w-10 md:h-10">
                       <box-icon name="chevron-down" className="w-full h-full" color="white"></box-icon>
@@ -145,8 +128,8 @@ const DashSideNav = ({ sideNavWidth }) => {
                 </div>
 
                 <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Record History</Link>
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-xl">Swap History</Link>
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Record History</Link>
+                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-[#3e7a25] md:text-lg">Swap History</Link>
                 </div>
               </li>
           </ul>

@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'forest': "#2C5F2D",
+        'forest': "#336021",
         'rust': '#D98E04',
         'dark': '#202020',
         'light-1': '#eeeeee'

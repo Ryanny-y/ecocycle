@@ -10,7 +10,7 @@ const useAdminCheck = () => {
     if (userData?.roles.includes(5150) && isAuthenticated) {
       navigate('/ecocycle/admin/overview');
     } else {
-      navigate('/ecocycle')
+      navigate('/ecocycle/admin_login')
     }
   }, [userData, isAuthenticated, navigate]);
 };
