@@ -6,24 +6,26 @@ import formatName from '../../utils/formatters/formatName';
 const EcoSwap = () => {
 
   const { accessToken } = useContext(authContext);
-  const [ recordData, setRecordData] = useState(null);
   const { products } = useContext(ProductContext);
+  
+  const [ recordData, setRecordData] = useState(null);
+  const [ filteredProducts, setFilteredProducts ] = useState([]);
   const [ confirmRecord, setConfirmRecord ] = useState(false);
+
+  const [ quantityInputs, setQuantityinputs ] = useState({})
   const [ formField, setFormField ] = useState({
     record_id: '',
     last_name: ''
   });
-
-  const handleFindRecord = async (e) => {
-    e.preventDefault();
-
+  
+  const handleFindRecord = async () => {
     const { record_id, last_name } = formField;
-
+    
     if(!record_id || !last_name) {
       alert('Record Id and Last Name are required!');
       return;
     }
-
+    
     try {
       const url = import.meta.env.VITE_API_URL;
       const response = await fetch(`${url}/records/${record_id}?last_name=${last_name}`, {
@@ -48,7 +50,29 @@ const EcoSwap = () => {
     }
   }
 
-  const [ filteredProducts, setFilteredProducts ] = useState([]);
+  const handleQuantityInputs = (productId, value) => {
+    const parsedValue = parseInt(value, 10);
+    
+    setQuantityinputs(prev => ({
+      ...prev,
+      [productId]: parsedValue
+    }));
+  }
+
+  const handleRedeem = async (product) => {
+    const quantity = quantityInputs[product._id] || 0;
+
+    const totalRequiredPoints = quantity * product.required_points;
+    
+    if(totalRequiredPoints > recordData.points) {
+      alert('Not Enough Points to Redeem Product');
+      return;
+    }
+
+    handleFindRecord();
+    console.log(quantity);
+    console.log(totalRequiredPoints);
+  }
 
   return (
     <section className="flex flex-col gap-3">
@@ -58,7 +82,10 @@ const EcoSwap = () => {
 
       <form 
         className="flex flex-col gap-3 items-start justify-start"
-        onSubmit={handleFindRecord}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleFindRecord();
+        }}
       >
         <p>Enter informations</p>
 
@@ -143,12 +170,21 @@ const EcoSwap = () => {
               <div className="flex flex-col gap-2 text-sm md:text-base">
                 <label htmlFor="quantity" className="flex items-center gap-2 font-medium grow mt-auto text-white">
                   <span>Quantity: </span>
-                  <input type="number" placeholder="0" className="w-14 placeholder:text-center bg-transparent border-b border-b-white text-center outline-none background-none"/>
+                  <input 
+                    type="number" 
+                    placeholder="0" 
+                    min="0"
+                    className="w-14 placeholder:text-center bg-transparent border-b border-b-white text-center outline-none background-none" 
+                    value={quantityInputs[product._id] || ''}
+                    onChange={(e) => {
+                      handleQuantityInputs(product._id, e.target.value)
+                    }}
+                  />
                 </label>
 
                 <div className="flex items-center text-white justify-between text-xs md:text-base">
                   <p className="">{product.required_points} points</p>
-                  <button className="font-medium py-0.5 px-4 rounded-md bg-white text-forest self-end">Redeem</button>
+                  <button className="font-medium py-0.5 px-4 rounded-md bg-white text-forest self-end" onClick={() => handleRedeem(product)}>Redeem</button>
                 </div>
               </div>
             </div>

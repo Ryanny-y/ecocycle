@@ -11,8 +11,9 @@ const Landing = () => {
       <section id="hero" className="bg-[url('/landing/hero_bg.jpg')] bg-no-repeat bg-top bg-cover h-[80svh] grid place-items-center relative">
         <div className="bg-black absolute top-0 right-0 left-0 bottom-0 opacity-30"></div>
 
-        <div className="container mx-auto text-center relative">
-          <h1 className="text-white font-bold text-3xl md:text-5xl">WELCOME TO ECOCYCLE</h1>
+        <div className="container mx-auto flex flex-col items-center gap-5 text-center relative text-white">
+          <h1 className="font-bold text-3xl md:text-5xl">WELCOME TO ECOCYCLE</h1>
+          <p className="max-w-[800px] font-semibold">Join the movement towards a sustainable future. Trade your recyclable materials for points and use them to shop for eco-friendly products. Together, we can make a positive impact on the planet—one trade at a time!</p>
         </div>
       </section>
         
