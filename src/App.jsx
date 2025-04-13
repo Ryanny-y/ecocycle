@@ -9,8 +9,8 @@ const App = () => {
       <MainHeader />
       <main className='flex flex-col gap-10'>
         <Outlet />
-        <MainFooter />
       </main>
+      <MainFooter />
     </>
   );
 };
