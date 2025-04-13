@@ -12,6 +12,7 @@ import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
 import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
 import RecordDash from './pages/admin/ecohub/RecordDash'
 import EcoSwap from './pages/admin/EcoSwap';
+import GreenPages from './pages/admin/GreenPages';
 import ProductsDash from './pages/admin/ProductsDash'
 import RecordHistory from './pages/admin/history/RecordHistory'
 import SwapHistory from './pages/admin/history/SwapHistory'
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: 'ecoswap',
         element: <EcoSwap />
+      },
+      {
+        path: 'green_pages',
+        element: <GreenPages />
       },
       // {
       //   path: 'recyclelog',
