@@ -4,19 +4,26 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import AdminDashboard from './pages/AdminDashboard'
 import './index.css'
 import App from './App'
-import RecordDash from './pages/admin/ecohub/RecordDash'
-import AuthProvider from './utils/contexts/AuthProvider'
-import DashOverview from './pages/admin/DashOverview'
+
+// ADMIN
 import Login from './pages/auth/Login'
+import DashOverview from './pages/admin/DashOverview'
+import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
+import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
+import RecordDash from './pages/admin/ecohub/RecordDash'
+import EcoSwap from './pages/admin/EcoSwap';
 import ProductsDash from './pages/admin/ProductsDash'
 import RecordHistory from './pages/admin/history/RecordHistory'
 import SwapHistory from './pages/admin/history/SwapHistory'
-import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
-import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
-import EcoSwap from './pages/admin/EcoSwap';
+
+// MAIN PAGE
 import MainEcohub from './pages/main/MainEcohub';
 import MainEcoswap from './pages/main/MainEcoswap';
 import Landing from './pages/main/Landing';
+
+// PROVIDERS
+import AuthProvider from './utils/contexts/AuthProvider'
+import ProductProvider from './utils/contexts/ProductProvider';
 
 const router = createBrowserRouter([
   {
@@ -82,7 +89,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <>
     <AuthProvider>
-      <RouterProvider router={router}/>
+      <ProductProvider>
+        <RouterProvider router={router}/>
+      </ProductProvider>
     </AuthProvider>
   </>,
 )

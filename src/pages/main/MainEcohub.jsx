@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import useScrollTop from "../../utils/hooks/useScrollTop";
 
 const MainEcohub = () => {
   
+  useScrollTop();
+
   const [ recordData, setRecordData ] = useState(null);
   const [ formField, setFormField ] = useState({
     record_id: '',

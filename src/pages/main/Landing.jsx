@@ -1,9 +1,13 @@
 import { Link } from "react-router";
 import { FaRecycle, FaExchangeAlt } from "react-icons/fa";
+import useScrollTop from '../../utils/hooks/useScrollTop';
 
 const Landing = () => {
+
+  useScrollTop();
+
   return (
-    <main className="flex flex-col gap-10">
+    <main className="flex flex-col gap-10 mb-10">
       <section id="hero" className="bg-[url('/landing/hero_bg.jpg')] bg-no-repeat bg-top bg-cover h-[80svh] grid place-items-center relative">
         <div className="bg-black absolute top-0 right-0 left-0 bottom-0 opacity-30"></div>
 
