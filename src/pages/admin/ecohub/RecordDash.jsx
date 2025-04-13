@@ -6,6 +6,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import formatName from '../../../utils/formatters/formatName'
 
+dayjs.extend(utc)
 dayjs.extend(timezone)
 
 const RecordDash = () => {
@@ -66,7 +67,7 @@ const RecordDash = () => {
                   <td className="text-center px-2 text-nowrap">{record.age}</td>
                   <td className="text-center px-2 text-nowrap">{record.contact_number}</td>
                   <td className="text-center px-2 text-nowrap">{record.address}</td>
-                  <td className="text-center px-2 text-nowrap">{dayjs(record.created_at).tz('Asia/Manila').format('YYYY/MMM/DD HH:mm:ss')}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(record?.created_at).tz('Asia/Manila').format('YYYY/MMM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>
