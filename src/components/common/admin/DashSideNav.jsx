@@ -16,12 +16,12 @@ const DashSideNav = () => {
   return (
     <section className="flex flex-col lg:flex-row bg-forest">
       {/* <!-- Mobile Header --> */}
-      <div className="flex justify-between items-center lg:hidden">
+      <div className="flex justify-between items-center lg:hidden py-2">
           <div className="flex items-center ml-2 mt-2 mb-2">
-              <img src="/logos/logo.png" alt="NSTP Logo" className="w-20 object-contain md:w-24"/>
-              <h1 className="font-bold ml-2 text-4xl text-white md:text-5xl">Eco-Cycle</h1>
+              <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain md:w-16"/>
+              <h1 className="font-bold ml-2 text-3xl text-white md:text-3xl">Eco-Cycle</h1>
           </div>
-          <button id="menu-toggle" className={`${mobileToggle ? 'hidden' : 'block'} lg:hidden p-2 text-4xl md:text-5xl text-white`} onClick={() => setMobileToggle(true)}>☰</button>
+          <button id="menu-toggle" className={`${mobileToggle ? 'hidden' : 'block'} lg:hidden p-2 text-3xl md:text-4xl text-white`} onClick={() => setMobileToggle(true)}>☰</button>
       </div>
 
       {/* <!-- Overlay (mobile only) --> */}
@@ -46,8 +46,8 @@ const DashSideNav = () => {
       `}>
           {/* <!-- Desktop Logo --> */}
           <Link to="/" className="hidden lg:flex items-center p-4 border-b border-white/20">
-              <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-16"/>
-              <h1 className="font-bold ml-2 text-2xl text-white lg:text-4xl lg:font-bold">Eco-Cycle</h1>
+              <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-14"/>
+              <h1 className="font-bold ml-1 text-2xl text-white lg:text-3xl lg:font-bold">Eco-Cycle</h1>
           </Link>
 
           {/* <!-- Close Button (mobile only) --> */}
@@ -95,22 +95,20 @@ const DashSideNav = () => {
 
               {/* <!-- EcoSwap --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
-                      <div className="flex items-center">
-                          <img src="/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
-                          <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
-                      </div>
-                  </div>
+                <Link to="/admin/ecoswap" className="flex items-center py-2 hover:bg-forest-hover duration-300">
+                    <img src="/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
+                    <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
+                </Link>
               </li>
 
               {/* <!-- Green Pages --> */}
               <li>
-                  <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
+                  <Link to="/admin/green_pages" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
                           <img src="/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
                           <p className="text-sm ml-2 md:text-lg">Green Pages</p>
                       </div>
-                  </div>
+                  </Link>
               </li>
 
               {/* History */}

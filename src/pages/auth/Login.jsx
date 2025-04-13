@@ -50,13 +50,9 @@ const Login = () => {
         setAccessToken(data.accessToken);
         setIsAuthenticated(true);
         
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
         navigate("/admin/overview");
       } catch (error) {
-        
-        
         alert(error);
         setLoading(false)
       }

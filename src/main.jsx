@@ -13,6 +13,7 @@ import RecordHistory from './pages/admin/history/RecordHistory'
 import SwapHistory from './pages/admin/history/SwapHistory'
 import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
 import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
+import EcoSwap from './pages/admin/EcoSwap';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'ecohub/update_record',
         element: <UpdateRecordDash />
+      },
+      {
+        path: 'ecoswap',
+        element: <EcoSwap />
       },
       // {
       //   path: 'recyclelog',

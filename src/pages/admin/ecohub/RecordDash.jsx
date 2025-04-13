@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import CreateRecord from "../../../components/ui/admin/CreateRecord";
 import useFetchData from "../../../utils/hooks/useFetchData";
-import dayjs from 'https://unpkg.com/dayjs@1.11.13/esm/index.js';
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+import formatName from '../../../utils/formatters/formatName'
 
 const RecordDash = () => {
   const [showCreateRecord, setShowCreateRecord] = useState(false);
@@ -11,10 +15,6 @@ const RecordDash = () => {
 
   const url = import.meta.env.VITE_API_URL;
   const { data, loading, error } = useFetchData(`${url}/records`, refetch);
-
-  const formatName = (record) => {
-    return `${record.first_name.charAt(0).toUpperCase()}${record.first_name.slice(1)} ${record.middle_name.charAt(0).toUpperCase()}. ${record.first_name.charAt(0).toUpperCase()}${record.last_name.slice(1)}`
-  }
 
   useEffect(() => {
     if (data && !loading && !error) {
@@ -65,7 +65,7 @@ const RecordDash = () => {
                   <td className="text-center px-2 text-nowrap">{record.age}</td>
                   <td className="text-center px-2 text-nowrap">{record.contact_number}</td>
                   <td className="text-center px-2 text-nowrap">{record.address}</td>
-                  <td className="text-center px-2 text-nowrap">{dayjs(record.created_at).format('YYYY/MMM/DD HH:mm:ss')}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(record.created_at).local().format('YYYY/MMM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>

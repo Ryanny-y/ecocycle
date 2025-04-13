@@ -1,17 +1,14 @@
 import DashSideNav from "../common/admin/DashSideNav";
 import DashHeader from "../common/admin/DashHeader";
 import { Outlet } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAdminCheck from '../../utils/hooks/useAdminCheck';
-import { MaterialContext } from "../../utils/contexts/MaterialProvider";
 
 const DashboardLayout = () => {
   useAdminCheck();
 
   const [ windowSize, setWindowSize ] = useState(window.innerWidth);
 
-  const { materials } = useContext(MaterialContext);
-    
 
   useEffect(() => {
     document.body.style.backgroundColor = '#eeeeee';
