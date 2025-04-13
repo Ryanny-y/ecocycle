@@ -69,9 +69,40 @@ const EcoSwap = () => {
       return;
     }
 
-    handleFindRecord();
-    console.log(quantity);
-    console.log(totalRequiredPoints);
+    const reqBody = {
+      record_id: recordData._id,
+      last_name: recordData.last_name,
+      product_id: product._id,
+      points_cost: totalRequiredPoints
+    }
+    
+    try {
+      const url = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${url}/swap`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(reqBody),
+        credentials: 'include'
+      })
+
+      if(!response.ok) {
+        const errData = await response.json();
+        throw new Error(`${response.status}: ${response.statusText} ${errData.error}`);
+      }
+
+      const data = await response.json();
+      alert(`${data.message}: Current Points: ${recordData.points - totalRequiredPoints}`);
+      handleFindRecord();
+      setQuantityinputs(prev => ({
+        ...prev,
+        [product._id]: 0
+      }))
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (
