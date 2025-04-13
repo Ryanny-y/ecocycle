@@ -14,11 +14,28 @@ import SwapHistory from './pages/admin/history/SwapHistory'
 import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
 import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
 import EcoSwap from './pages/admin/EcoSwap';
+import MainEcohub from './pages/main/MainEcohub';
+import MainEcoswap from './pages/main/MainEcoswap';
+import Landing from './pages/main/Landing';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    children: [
+      {
+        path: '',
+        element: <Landing />
+      },
+      {
+        path: 'ecohub',
+        element: <MainEcohub />
+      },
+      {
+        path: 'ecoswap',
+        element: <MainEcoswap />
+      },
+    ],
   }, {
     path: '/admin_login',
     element: <Login />
