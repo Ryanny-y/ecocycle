@@ -3,9 +3,10 @@ import CreateRecord from "../../../components/ui/admin/CreateRecord";
 import useFetchData from "../../../utils/hooks/useFetchData";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-
-dayjs.extend(utc)
+import timezone from 'dayjs/plugin/timezone'
 import formatName from '../../../utils/formatters/formatName'
+
+dayjs.extend(timezone)
 
 const RecordDash = () => {
   const [showCreateRecord, setShowCreateRecord] = useState(false);
@@ -65,7 +66,7 @@ const RecordDash = () => {
                   <td className="text-center px-2 text-nowrap">{record.age}</td>
                   <td className="text-center px-2 text-nowrap">{record.contact_number}</td>
                   <td className="text-center px-2 text-nowrap">{record.address}</td>
-                  <td className="text-center px-2 text-nowrap">{dayjs(record.created_at).local().format('YYYY/MMM/DD HH:mm:ss')}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(record.created_at).tz('Asia/Manila').format('YYYY/MMM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>
