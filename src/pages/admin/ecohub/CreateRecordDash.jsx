@@ -9,7 +9,7 @@ const CreateRecordDash = () => {
     first_name: "",
     middle_name: "",
     last_name: "",
-    age: "",
+    age: 0,
     contact_number: "",
     address: "",
   });
@@ -19,7 +19,7 @@ const CreateRecordDash = () => {
 
     setFormField((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: value.trim(),
     }));
   };
 
@@ -30,6 +30,11 @@ const CreateRecordDash = () => {
 
     if(!first_name || !middle_name || !last_name || !age) {
       alert('All Fields Are Required');
+      return;
+    }
+
+    if(formField.age < 0) {
+      alert('Invalid Age');
       return;
     }
 
@@ -58,7 +63,7 @@ const CreateRecordDash = () => {
         first_name: "",
         middle_name: "",
         last_name: "",
-        age: "",
+        age: 0,
         contact_number: "",
         address: "",
       })

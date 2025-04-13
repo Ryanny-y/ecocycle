@@ -24,6 +24,9 @@ export default {
         '100': '450px',
         '700': '700px'
       },
+      screens: {
+        'xs': '420px'
+      }
     },
   },
   plugins: [],

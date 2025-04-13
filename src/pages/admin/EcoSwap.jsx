@@ -8,6 +8,7 @@ const EcoSwap = () => {
   const { accessToken } = useContext(authContext);
   const [ recordData, setRecordData] = useState(null);
   const { products } = useContext(ProductContext);
+  const [ confirmRecord, setConfirmRecord ] = useState(false);
   const [ formField, setFormField ] = useState({
     record_id: '',
     last_name: ''
@@ -46,6 +47,8 @@ const EcoSwap = () => {
       alert(error)
     }
   }
+
+  const [ filteredProducts, setFilteredProducts ] = useState([]);
 
   return (
     <section className="flex flex-col gap-3">
@@ -114,10 +117,44 @@ const EcoSwap = () => {
           </section>
         </div>
 
-        <button className="bg-forest text-white py-2 w-3/5 px-3 self-center sm:self-start sm:w-2/5 sm:max-w-44 rounded-md hover:bg-forest-hover">Confirm Record</button>
+        <button className="bg-forest text-white py-2 w-3/5 px-3 self-center sm:self-start sm:w-2/5 sm:max-w-44 rounded-md hover:bg-forest-hover" onClick={(e) => {
+          setFilteredProducts(products.filter(product => product.required_points < recordData.points));
+          setConfirmRecord(true)
+          }}>Confirm Record</button>
       </div>}
 
+      {confirmRecord && <div id="available_products" className="bg-white p-5 rounded-md shadow-lg flex flex-col">
+        <h1 className="font-bold text-base sm:text-xl mb-3">{filteredProducts.length <=0 && 'No '}Available Products for Points: </h1>
 
+        <section id="product_container" className="grid grid-cols-1 start justify-items-center sm:justify-items-start sm:grid-cols-2 gap-5">
+          {filteredProducts.map(product => (
+            <div className="bg-forest px-4 py-4 xs:max-w-[300px] sm:max-w-[450px] rounded-md w-full" key={product._id}>
+              <div className="flex xs:flex-row gap-3 mb-2">
+                <div className="bg-white shrink-0 p-2 rounded-md">
+                  <img src={`https://ecocycle-backend.onrender.com/images/${product.image}`} alt="product img" className="h-16 w-20 sm:h-20 sm:w-24 p-2 bg-gray-1 rounded-md"/>
+                </div>
+
+                <div className="flex flex-col justify-start gap-0.5 h-full text-xs md:text-sm text-white grow">
+                  <h1>{product.name}</h1>
+                  <p>{product.description}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 text-sm md:text-base">
+                <label htmlFor="quantity" className="flex items-center gap-2 font-medium grow mt-auto text-white">
+                  <span>Quantity: </span>
+                  <input type="number" placeholder="0" className="w-14 placeholder:text-center bg-transparent border-b border-b-white text-center outline-none background-none"/>
+                </label>
+
+                <div className="flex items-center text-white justify-between text-xs md:text-base">
+                  <p className="">{product.required_points} points</p>
+                  <button className="font-medium py-0.5 px-4 rounded-md bg-white text-forest self-end">Redeem</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+      </div>}
     </section>
   )
 };
