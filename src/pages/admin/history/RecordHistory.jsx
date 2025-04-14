@@ -15,7 +15,6 @@ const RecordHistory = () => {
 
   useEffect(() => {
     if(data && !loading && !error) {
-      console.log(data);
       setRecycleSubmissions(data)
     }
   }, [data, loading, error])
