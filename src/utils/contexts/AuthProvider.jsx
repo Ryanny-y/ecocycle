@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
     const exp = decoded.exp * 1000;
     const expDate = dayjs(exp).utc().format('YYYY/MM/DD HH:MM:ss');
     console.log(expDate);
+    console.log(dayjs().utc().format('YYYY/MM/DD HH:MM:ss'));
     
 
   }, [accessToken, userData])
