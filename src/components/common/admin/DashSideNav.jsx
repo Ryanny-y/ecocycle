@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import '../../../assets/styles/style.css';
 import { FiPackage } from "react-icons/fi";
 import { FaHistory } from "react-icons/fa";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const DashSideNav = () => {
   const [ mobileToggle, setMobileToggle ] = useState(false);
@@ -19,10 +20,10 @@ const DashSideNav = () => {
     <section className="flex flex-col lg:flex-row bg-forest">
       {/* <!-- Mobile Header --> */}
       <div className="flex justify-between items-center lg:hidden py-2">
-          <div className="flex items-center ml-2 mt-2 mb-2">
+          <Link to='/' className="flex items-center ml-2 mt-2 mb-2">
               <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain md:w-16"/>
               <h1 className="font-bold ml-2 text-3xl text-white md:text-3xl">Eco-Cycle</h1>
-          </div>
+          </Link>
           <button id="menu-toggle" className={`${mobileToggle ? 'hidden' : 'block'} lg:hidden p-2 text-3xl md:text-4xl text-white`} onClick={() => setMobileToggle(true)}>☰</button>
       </div>
 
@@ -68,9 +69,7 @@ const DashSideNav = () => {
               <li>
                   <Link to="/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
-                          <box-icon type="solid" name='dashboard' className="h-full w-full" color="white"></box-icon>
-                        </div>
+                        <MdOutlineDashboard className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
                         <p className="text-sm ml-2 md:text-lg">Overview</p>
                       </div>
                   </Link>
@@ -117,7 +116,7 @@ const DashSideNav = () => {
               <li>
                 <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                     <div className="flex items-center">
-                        <FaHistory className="w-10 object-contain md:w-12 md:h-10 lg:w-16 py-1"/>
+                        <FaHistory className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
                         <p className="text-sm ml-2 md:text-lg">History</p>
                     </div>
                     <div className="icon w-8 h-8 md:w-10 md:h-10">
@@ -135,7 +134,7 @@ const DashSideNav = () => {
               <li>
                   <Link to="/admin/products" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                       <div className="flex items-center">
-                          <FiPackage className="w-10 object-contain md:w-12 md:h-10 lg:w-16 py-1"/>
+                          <FiPackage className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
                           <p className="text-sm ml-2 md:text-lg">Products</p>
                       </div>
                   </Link>

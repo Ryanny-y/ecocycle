@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useFetchData from "../../../utils/hooks/useFetchData";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -14,13 +14,45 @@ const RecordDash = () => {
 
   const url = import.meta.env.VITE_API_URL;
   const { data, loading, error } = useFetchData(`${url}/records`);
-
+  
   useEffect(() => {
     if (data && !loading && !error) {
       setRecords(data);
       setNewRecord(data.filter(record => dayjs(record.created_at).isSame(dayjs(), 'day')));
     }
   }, [data, loading, error]);
+
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const debounceTimeOut = useRef(null);
+  // DEBOUNCING
+  useEffect(() => {
+    if(!data) return;
+
+    if(debounceTimeOut.current) {
+      clearTimeout(debounceTimeOut.current);
+    }
+
+    debounceTimeOut.current = setTimeout(() => {
+      const value = searchTerm.toLowerCase();
+
+      if(!value) {
+        setRecords(data);
+      } else {
+        const records = data.filter(record => {
+          const fullname = `${record.first_name} ${record.middle_name} ${record.last_name}`.toLowerCase();
+          
+          const foundByName = fullname.includes(value);
+          return foundByName || record._id.toLowerCase().includes(value);
+        })
+        setRecords(records)
+      }
+    }, 300);
+
+    return () => {
+      clearTimeout(debounceTimeOut.current);
+    }
+  }, [data, searchTerm])
 
   return (
     <section id="record_dashboard">
@@ -29,7 +61,12 @@ const RecordDash = () => {
 
         <div className="w-full relative md:grow-0 md:w-96 bg-white px-3 flex rounded-md items-center gap-2">
           <box-icon name='search' className="absolute"></box-icon>
-          <input type="text" placeholder="Search"  className="bg-transparent ml-8 outline-none rounded-md w-full py-2"/>
+          <input 
+            type="text" 
+            placeholder="Search"  
+            className="bg-transparent ml-8 outline-none rounded-md w-full py-2" 
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
       </div>
 
