@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { ProductContext } from "../../utils/contexts/ProductProvider";
 import { authContext } from "../../utils/contexts/AuthProvider";
-import formatName from '../../utils/formatters/formatName';
+import formatName from '../../utils/helpers/formatName';
 
 const EcoSwap = () => {
 
@@ -169,7 +169,7 @@ const EcoSwap = () => {
 
             <div className="flex flex-col gap-2 w-full sm:w-auto text-white bg-forest rounded-md p-3 items-center">
               <p>Available Points:</p>
-              <p className="font-bold">{recordData.points}</p>
+              <p className="font-bold">{recordData.points.toFixed(2)}</p>
             </div>
           </section>
         </div>

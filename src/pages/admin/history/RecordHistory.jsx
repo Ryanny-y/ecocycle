@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetchData from "../../../utils/hooks/useFetchData";
-import formatName from "../../../utils/formatters/formatName";
+import formatName from "../../../utils/helpers/formatName";
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 

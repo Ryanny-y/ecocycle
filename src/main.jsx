@@ -83,10 +83,10 @@ const router = createBrowserRouter([
         path: 'history/swap',
         element: <SwapHistory />
       },
-      // {
-      //   path: 'products',
-      //   element: <ProductsDash />
-      // }
+      {
+        path: 'products',
+        element: <ProductsDash />
+      }
     ]
   }
 ])

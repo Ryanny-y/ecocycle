@@ -4,12 +4,12 @@ import useFetchData from "../../../utils/hooks/useFetchData";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-import formatName from '../../../utils/formatters/formatName'
+import formatName from '../../../utils/helpers/formatName'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const RecordDash = () => {
+const RecordDash = () => { 
   const [showCreateRecord, setShowCreateRecord] = useState(false);
   const [records, setRecords] = useState([]);
   const [refetch, setRefetch] = useState(true);

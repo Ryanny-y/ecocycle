@@ -10,6 +10,8 @@ const ProductsDash = () => {
 
   useEffect(() => {
     if(data && !error && !loading) {
+      console.log(data);
+      
       setProducts(data);
     }
   }, [data, loading, error])
@@ -28,8 +30,7 @@ const ProductsDash = () => {
       <div>
         <nav>
           <ul className="flex items-center gap-4">
-            <li>All ({products.length})</li>
-            <li>Newest ({products.length})</li>
+            <li>All (<span className="font-semibold text-forest">{products.length}</span>)</li>
           </ul>
         </nav>
 
@@ -39,9 +40,9 @@ const ProductsDash = () => {
               <tr>
                 <th className="text-start py-4 px-2 text-nowrap">Product Id</th>
                 <th className="px-2 text-nowrap">Name</th>
-                <th className="px-2 text-nowrap">Stocks</th>
                 <th className="px-2 text-nowrap">Description</th>
-                <th className="px-2 text-nowrap">Exchange for</th>
+                <th className="px-2 text-nowrap">Category</th>
+                <th className="px-2 text-nowrap">Required Points</th>
               </tr>
             </thead>
 
@@ -50,9 +51,9 @@ const ProductsDash = () => {
                 <tr className="even:bg-white" key={product._id}>
                   <td className="text-start py-2 px-2 text-nowrap">{product._id}</td>
                   <td className="text-center px-2 text-nowrap">{product.name}</td>
-                  <td className="text-center px-2 text-nowrap">{product.stocks}</td>
                   <td className="text-center px-2 text-nowrap">{product.description}</td>
-                  <td className="text-center px-2 text-nowrap">{`${product.exchange_for} ${product.unit}`}</td>
+                  <td className="text-center px-2 text-nowrap">{product.category}</td>
+                  <td className="text-center px-2 text-nowrap font-semibold">{product.required_points} Points</td>
                 </tr>
               ))}
             </tbody>

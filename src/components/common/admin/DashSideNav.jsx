@@ -1,7 +1,8 @@
 import { useState } from "react";
-import DashNavLink from "../../ui/admin/DashNavLink";
 import { Link } from "react-router";
 import '../../../assets/styles/style.css';
+import { FiPackage } from "react-icons/fi";
+import { FaHistory } from "react-icons/fa";
 
 const DashSideNav = () => {
   const [ mobileToggle, setMobileToggle ] = useState(false);
@@ -116,9 +117,7 @@ const DashSideNav = () => {
               <li>
                 <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                     <div className="flex items-center">
-                        <div className="w-10 object-contain md:w-14 lg:w-16 md:h-12">
-                          <box-icon name='history' className="h-full w-full" color="white"></box-icon>
-                        </div>
+                        <FaHistory className="w-10 object-contain md:w-12 md:h-10 lg:w-16 py-1"/>
                         <p className="text-sm ml-2 md:text-lg">History</p>
                     </div>
                     <div className="icon w-8 h-8 md:w-10 md:h-10">
@@ -130,6 +129,16 @@ const DashSideNav = () => {
                     <Link to="/admin/history/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Record History</Link>
                     <Link to="/admin/history/swap" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Swap History</Link>
                 </div>
+              </li>
+
+              {/* PRODUCTS */}
+              <li>
+                  <Link to="/admin/products" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
+                      <div className="flex items-center">
+                          <FiPackage className="w-10 object-contain md:w-12 md:h-10 lg:w-16 py-1"/>
+                          <p className="text-sm ml-2 md:text-lg">Products</p>
+                      </div>
+                  </Link>
               </li>
           </ul>
       </nav>
