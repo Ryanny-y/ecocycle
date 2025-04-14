@@ -58,7 +58,6 @@ const CreateRecordDash = () => {
       }
 
       const data = await response.json();
-      alert(data.message);
       setFormField({
         first_name: "",
         middle_name: "",
@@ -66,7 +65,8 @@ const CreateRecordDash = () => {
         age: 0,
         contact_number: "",
         address: "",
-      })
+      });
+      alert(data.message);
     } catch (error) {
       alert(error)
     }

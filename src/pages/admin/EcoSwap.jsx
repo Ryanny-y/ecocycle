@@ -7,6 +7,7 @@ const EcoSwap = () => {
 
   const { accessToken } = useContext(authContext);
   const { products } = useContext(ProductContext);
+  const url = import.meta.env.VITE_API_URL;
   
   const [ recordData, setRecordData] = useState(null);
   const [ filteredProducts, setFilteredProducts ] = useState([]);
@@ -27,7 +28,6 @@ const EcoSwap = () => {
     }
     
     try {
-      const url = import.meta.env.VITE_API_URL;
       const response = await fetch(`${url}/records/${record_id}?last_name=${last_name}`, {
         method: 'GET',
         headers: {
@@ -77,7 +77,6 @@ const EcoSwap = () => {
     }
     
     try {
-      const url = import.meta.env.VITE_API_URL;
       const response = await fetch(`${url}/swap`, {
         method: 'POST',
         headers: {
@@ -189,7 +188,7 @@ const EcoSwap = () => {
             <div className="bg-forest px-4 py-4 xs:max-w-[300px] sm:max-w-[450px] rounded-md w-full" key={product._id}>
               <div className="flex xs:flex-row gap-3 mb-2">
                 <div className="bg-white shrink-0 p-2 rounded-md">
-                  <img src={`https://ecocycle-backend.onrender.com/images/${product.image}`} alt="product img" className="h-16 w-20 sm:h-20 sm:w-24 p-2 bg-gray-1 rounded-md"/>
+                  <img src={`${url}/images/${product.image}`} alt="product img" className="h-16 w-20 sm:h-20 sm:w-24 p-2 bg-gray-1 rounded-md"/>
                 </div>
 
                 <div className="flex flex-col justify-start gap-0.5 h-full text-xs md:text-sm text-white grow">

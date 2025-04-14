@@ -75,14 +75,14 @@ const router = createBrowserRouter([
         path: 'green_pages',
         element: <GreenPages />
       },
-      // {
-      //   path: 'recyclelog',
-      //   element: <RecordHistory />
-      // },
-      // {
-      //   path: 'exchange',
-      //   element: <SwapHistory />
-      // },
+      {
+        path: 'history/records',
+        element: <RecordHistory />
+      },
+      {
+        path: 'history/swap',
+        element: <SwapHistory />
+      },
       // {
       //   path: 'products',
       //   element: <ProductsDash />

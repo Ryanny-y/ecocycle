@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetchData from "../../../utils/hooks/useFetchData";
+import formatName from "../../../utils/formatters/formatName";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
 
 const RecordHistory = () => {
 
   const [ recycleSubmissions, setRecycleSubmissions ] = useState([]);
 
+  const url = import.meta.env.VITE_API_URL;
+  const { data, loading, error } = useFetchData(`${url}/history/recordLogs`);
+
+  useEffect(() => {
+    if(data && !loading && !error) {
+      console.log(data);
+      setRecycleSubmissions(data)
+    }
+  }, [data, loading, error])
 
   return (
     <section id="user_dashboard">
       <div className="flex items-center justify-between mb-2">
-        <h1 className="font-bold text-2xl tracking-wide">Recycle Log</h1>
-
-        <button
-          className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4">
-          Create New Product
-        </button>
+        <h1 className="font-bold text-2xl tracking-wide">Record History</h1>
       </div>
 
       <div>
@@ -29,10 +39,9 @@ const RecordHistory = () => {
             <thead className="bg-gray-100 text-sm md:text-md font-semibold">
               <tr>
                 <th className="text-start py-4 px-2 text-nowrap">Log Id</th>
-                <th className="px-2 text-nowrap">Name</th>
+                <th className="px-2 text-nowrap">Submitted By</th>
                 <th className="px-2 text-nowrap">Material Type</th>
-                <th className="px-2 text-nowrap">Weight</th>
-                <th className="px-2 text-nowrap">Points Awarded</th>
+                <th className="px-2 text-nowrap">Points Earned</th>
                 <th className="px-2 text-nowrap">Date</th>
               </tr>
             </thead>
@@ -41,10 +50,10 @@ const RecordHistory = () => {
               {recycleSubmissions.map((submission) => (
                 <tr className="even:bg-white" key={submission._id}>
                   <td className="text-start py-2 px-2 text-nowrap">{submission._id}</td>
-                  <td className="text-center px-2 text-nowrap">{submission.name}</td>
-                  <td className="text-center px-2 text-nowrap">{submission.stocks}</td>
-                  <td className="text-center px-2 text-nowrap">{submission.description}</td>
-                  <td className="text-center px-2 text-nowrap">{`${submission.exchange_for} ${submission.unit}`}</td>
+                  <td className="text-center px-2 text-nowrap">{formatName(submission.submitted_by)}</td>
+                  <td className="text-center px-2 text-nowrap">{submission.materials.map(mat => `${mat.material.name}`).join(', ')}</td>
+                  <td className="text-center px-2 text-nowrap">{submission.points_earned}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(submission.created_at).utc().format('YYYY/MM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>

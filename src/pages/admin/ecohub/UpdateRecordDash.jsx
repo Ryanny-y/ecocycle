@@ -96,13 +96,14 @@ const UpdateRecordDash = () => {
       }
 
       const data = await response.json();
-      alert(data.message);
       setFormField((prev) => ({
         ...prev,
         record_id: "",
         last_name: "",
         points: 0
-      }))
+      }));
+      
+      alert(data.message);
     } catch (error) {
       alert(error);
     }
@@ -111,7 +112,7 @@ const UpdateRecordDash = () => {
   return (
     <section className="flex flex-col gap-2">
       <div>
-        <h1 className="font-bold text-2xl tracking-wide">Update Record</h1>
+        <h1 className="font-bold text-2xl tracking-wide">Earn Points</h1>
       </div>
 
       <form 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DashNavLink from "../../ui/admin/DashNavLink";
 import { Link } from "react-router";
+import '../../../assets/styles/style.css';
 
 const DashSideNav = () => {
   const [ mobileToggle, setMobileToggle ] = useState(false);
@@ -60,7 +61,7 @@ const DashSideNav = () => {
           </div>
 
           {/* <!-- Menu Content --> */}
-          <ul className="flex flex-col text-white w-full px-3  overflow-y-auto">
+          <ul className="flex flex-col text-white w-full px-3 hide-scrollbar">
 
               {/* <!-- Overview --> */}
               <li>
@@ -126,8 +127,8 @@ const DashSideNav = () => {
                 </div>
 
                 <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Record History</Link>
-                    <Link to="" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Swap History</Link>
+                    <Link to="/admin/history/records" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Record History</Link>
+                    <Link to="/admin/history/swap" className="block w-full text-lg py-2 pl-16 duration-300 hover:bg-forest-hover md:text-lg">Swap History</Link>
                 </div>
               </li>
           </ul>

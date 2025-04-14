@@ -1,26 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetchData from "../../../utils/hooks/useFetchData";
+import formatName from "../../../utils/formatters/formatName";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
 
 const SwapHistory = () => {
 
-  const [ exhanges, setExchanges ] = useState([]);
+  const [ swapProducts, setSwapProducts ] = useState([]);
 
+  const url = import.meta.env.VITE_API_URL;
+  const { data, loading, error } = useFetchData(`${url}/history/swapLogs`);
+
+  useEffect(() => {
+    if(data && !loading && !error) {
+      setSwapProducts(data)
+    }
+  }, [data, loading, error])
 
   return (
     <section id="user_dashboard">
       <div className="flex items-center justify-between mb-2">
-        <h1 className="font-bold text-2xl tracking-wide">Recycle Log</h1>
-
-        <button
-          className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4">
-          Create New Product
-        </button>
+        <h1 className="font-bold text-2xl tracking-wide">Record History</h1>
       </div>
 
       <div>
         <nav>
           <ul className="flex items-center gap-4">
-            <li>All ({exhanges.length})</li>
-            <li>Newest ({exhanges.length})</li>
+            <li>All ({swapProducts.length})</li>
+            <li>Newest ({swapProducts.length})</li>
           </ul>
         </nav>
 
@@ -28,23 +37,22 @@ const SwapHistory = () => {
           <table className="products_table w-full border-spacing-y-3 border-separate text-nowrap">
             <thead className="bg-gray-100 text-sm md:text-md font-semibold">
               <tr>
-                <th className="text-start py-4 px-2 text-nowrap">Exchange Id</th>
-                <th className="px-2 text-nowrap">User Id</th>
-                <th className="px-2 text-nowrap">Name</th>
-                <th className="px-2 text-nowrap">Product</th>
-                <th className="px-2 text-nowrap">Points Used</th>
+                <th className="text-start py-4 px-2 text-nowrap">Log Id</th>
+                <th className="px-2 text-nowrap">Submitted By</th>
+                <th className="px-2 text-nowrap">Exchanged Product</th>
+                <th className="px-2 text-nowrap">Points Deducted</th>
                 <th className="px-2 text-nowrap">Date</th>
               </tr>
             </thead>
 
             <tbody>
-              {exhanges.map((exchange) => (
-                <tr className="even:bg-white" key={exchange._id}>
-                  <td className="text-start py-2 px-2 text-nowrap">{exchange._id}</td>
-                  <td className="text-center px-2 text-nowrap">{exchange.name}</td>
-                  <td className="text-center px-2 text-nowrap">{exchange.stocks}</td>
-                  <td className="text-center px-2 text-nowrap">{exchange.description}</td>
-                  <td className="text-center px-2 text-nowrap">{`${exchange.exchange_for} ${exchange.unit}`}</td>
+              {swapProducts.map((swap_product) => (
+                <tr className="even:bg-white" key={swap_product._id}>
+                  <td className="text-start py-2 px-2 text-nowrap">{swap_product._id}</td>
+                  <td className="text-center px-2 text-nowrap">{formatName(swap_product.submitted_by)}</td>
+                  <td className="text-center px-2 text-nowrap">{swap_product.product_id.name}</td>
+                  <td className="text-center px-2 text-nowrap">{swap_product.points_deducted}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(swap_product.created_at).utc().format('YYYY/MM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>

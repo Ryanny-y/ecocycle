@@ -104,6 +104,7 @@ const Login = () => {
                 } }
                 placeholder="Username"
                 className="rounded-md bg-gray-1 p-2 px-5 w-full outline-none"
+                autoComplete="username"
               />
               <input
                 type="password"
@@ -117,6 +118,7 @@ const Login = () => {
                 } }
                 placeholder="Password"
                 className="rounded-md bg-gray-1 p-2 px-5 w-full outline-none"
+                autoComplete="password"
               />
             </div>
 
