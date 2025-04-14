@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import CreateRecord from "../../../components/ui/admin/CreateRecord";
 import useFetchData from "../../../utils/hooks/useFetchData";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -10,20 +9,18 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 const RecordDash = () => { 
-  const [showCreateRecord, setShowCreateRecord] = useState(false);
   const [records, setRecords] = useState([]);
-  const [refetch, setRefetch] = useState(true);
   const [ newRecords, setNewRecord ] = useState([]);
 
   const url = import.meta.env.VITE_API_URL;
-  const { data, loading, error } = useFetchData(`${url}/records`, refetch);
+  const { data, loading, error } = useFetchData(`${url}/records`);
 
   useEffect(() => {
     if (data && !loading && !error) {
       setRecords(data);
       setNewRecord(data.filter(record => dayjs(record.created_at).isSame(dayjs(), 'day')));
     }
-  }, [data, loading, error, refetch]);
+  }, [data, loading, error]);
 
   return (
     <section id="record_dashboard">
@@ -73,12 +70,6 @@ const RecordDash = () => {
             </tbody>
           </table>
         </div>
-
-        <CreateRecord
-          showCreateRecord={showCreateRecord}
-          setShowCreateRecord={setShowCreateRecord}
-          setRefetch={setRefetch}
-        />
       </div>
     </section>
   );

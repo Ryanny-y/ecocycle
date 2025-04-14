@@ -117,6 +117,7 @@ const CreateRecordDash = () => {
             <input
               type="number"
               name="age"
+              min='0'
               placeholder="Age"
               required
               className="p-2 bg-gray-1 w-14 md:w-20 shrink placeholder:text-gray-2 rounded-md"
