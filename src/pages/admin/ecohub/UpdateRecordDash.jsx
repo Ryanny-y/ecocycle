@@ -76,9 +76,12 @@ const UpdateRecordDash = () => {
     }
 
     const reqBody = {
-      ...formField,
+      record_id: formField.record_id.trim(),
+      last_name: formField.last_name.trim(),
+      points: Number(formField.points),
       materials: formField.materials.map(mat => ({ material: mat.id, weight: mat.weight }))
     }
+
     try {
       const url = import.meta.env.VITE_API_URL;
       const response = await fetch(`${url}/records/${formField.record_id}`, {

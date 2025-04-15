@@ -28,7 +28,7 @@ const EcoSwap = () => {
     }
     
     try {
-      const response = await fetch(`${url}/records/${record_id}?last_name=${last_name}`, {
+      const response = await fetch(`${url}/records/${record_id.trim()}?last_name=${last_name.trim()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',

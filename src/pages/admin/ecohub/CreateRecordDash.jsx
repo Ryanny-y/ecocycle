@@ -19,12 +19,21 @@ const CreateRecordDash = () => {
 
     setFormField((prev) => ({
       ...prev,
-      [name]: value.trim(),
+      [name]: value,
     }));
   };
 
   const handleCreateRecord = async (e) => {
     e.preventDefault();
+
+    const trimmedData = {
+      first_name: formField.first_name.trim(),
+      middle_name: formField.middle_name.trim(),
+      last_name: formField.last_name.trim(),
+      age: Number(formField.age),
+      contact_number: formField.contact_number.trim(),
+      address: formField.address.trim(),
+    };
 
     const { first_name, middle_name, last_name, age, contact_number, address } = formField;
 
@@ -46,7 +55,7 @@ const CreateRecordDash = () => {
           'Content-Type': 'application/json; charset=utf-8',
           'Authorization': `Bearer ${accessToken}`
         },
-        body: JSON.stringify(formField),
+        body: JSON.stringify(trimmedData),
         credentials: "include"
       })
 
