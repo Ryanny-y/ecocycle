@@ -47,12 +47,12 @@ const SwapHistory = () => {
 
             <tbody>
               {swapProducts.map((swap_product) => (
-                <tr className="even:bg-white" key={swap_product._id}>
-                  <td className="text-start py-2 px-2 text-nowrap">{swap_product._id}</td>
-                  <td className="text-center px-2 text-nowrap">{formatName(swap_product.submitted_by)}</td>
-                  <td className="text-center px-2 text-nowrap">{swap_product.product_id.name}</td>
-                  <td className="text-center px-2 text-nowrap">{swap_product.points_deducted}</td>
-                  <td className="text-center px-2 text-nowrap">{dayjs(swap_product.created_at).utc().format('YYYY/MM/DD HH:mm:ss')}</td>
+                <tr className="even:bg-white" key={swap_product?._id}>
+                  <td className="text-start py-2 px-2 text-nowrap">{swap_product?._id}</td>
+                  <td className="text-center px-2 text-nowrap">{formatName(swap_product?.submitted_by)}</td>
+                  <td className="text-center px-2 text-nowrap">{swap_product?.product_id.name}</td>
+                  <td className="text-center px-2 text-nowrap">{swap_product?.points_deducted}</td>
+                  <td className="text-center px-2 text-nowrap">{dayjs(swap_product?.created_at).utc().format('YYYY/MM/DD HH:mm:ss')}</td>
                 </tr>
               ))}
             </tbody>
