@@ -58,10 +58,10 @@ const DashSideNav = () => {
 
             {/* <!-- Close Button (mobile only) --> */}
             <div className="flex items-center justify-between lg:hidden py-3 px-4">
-              <div className="flex items-center">
+              <Link to='/' className="flex items-center">
                   <img src="/logos/logo.png" alt="NSTP Logo" className="h-10 md:h-16"/>
                   <h1 className="font-bold ml-2 n text-2xl text-white md:text-3xl">Eco-Cycle</h1>
-              </div>
+              </Link>
               <span id="close-menu" className="text-white text-5xl cursor-pointer" onClick={() => setMobileToggle(false)}>×</span>
             </div>
 

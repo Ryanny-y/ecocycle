@@ -84,7 +84,7 @@ const CreateRecordDash = () => {
   return (
     <section className="flex flex-col gap-2">
       <div>
-        <h1 className="font-bold text-2xl tracking-wide">Create Record</h1>
+        <h1 className="font-bold text-2xl tracking-wide">Create New Record</h1>
       </div>
 
       <form 

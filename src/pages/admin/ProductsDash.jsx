@@ -1,31 +1,39 @@
 import { useEffect, useState } from "react";
 import useFetchData from "../../utils/hooks/useFetchData";
+import CreateProduct from "../../components/ui/admin/CreateProduct";
 
 const ProductsDash = () => {
 
   const [ products, setProducts ] = useState([]);
+  const [ refetch, setRefetch ] = useState(false);
 
   const url = import.meta.env.VITE_API_URL;
-  const { data, error, loading } = useFetchData(`${url}/products`);
+  const { data, error, loading } = useFetchData(`${url}/products`, refetch);
 
   useEffect(() => {
     if(data && !error && !loading) {
+      console.log(data);
+      
       setProducts(data);
     }
-  }, [data, loading, error])
+  }, [data, loading, error]);
+
+  const [ showCreateProduct, setShowCreateProduct ] = useState(false);
 
   return (
-    <section id="user_dashboard">
+    <main id="user_dashboard">
       <div className="flex items-center justify-between mb-2">
         <h1 className="font-bold text-2xl tracking-wide">Products</h1>
 
         <button
-          className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4">
+          className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"
+          onClick={() => setShowCreateProduct(true)}
+        >
           Create New Product
         </button>
       </div>
 
-      <div>
+      <section>
         <nav>
           <ul className="flex items-center gap-4">
             <li>All (<span className="font-semibold text-forest">{products.length}</span>)</li>
@@ -47,18 +55,24 @@ const ProductsDash = () => {
             <tbody>
               {products.map((product) => (
                 <tr className="even:bg-white" key={product._id}>
-                  <td className="text-start py-2 px-2 text-nowrap">{product._id}</td>
-                  <td className="text-center px-2 text-nowrap">{product.name}</td>
-                  <td className="text-center px-2 text-nowrap">{product.description}</td>
-                  <td className="text-center px-2 text-nowrap">{product.category}</td>
-                  <td className="text-center px-2 text-nowrap font-semibold">{product.required_points} Points</td>
-                </tr>
+                <td className="text-start py-2 px-2 text-nowrap">{product._id}</td>
+                <td className="text-center py-2 px-2 text-nowrap flex items-center gap-2">
+                  <img src={`${url}/images/${product.image}`} alt="Product Img" className="h-7 w-7"/>
+                  {product.name}
+                </td>
+                <td className="text-center px-2 text-nowrap">{product.description}</td>
+                <td className="text-center px-2 text-nowrap">{product.category}</td>
+                <td className="text-center px-2 text-nowrap font-semibold">{product.required_points} Points</td>
+              </tr>
+              
               ))}
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {showCreateProduct && <CreateProduct setShowCreateProduct={setShowCreateProduct} setRefetch={setRefetch}/>}
+    </main>
   )
 };
 
