@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import useFetchData from '../../utils/hooks/useFetchData';
+import '../../assets/styles/style.css'
 
 export const ProductContext = createContext();
 
@@ -19,7 +20,12 @@ const ProductProvider = ({ children }) => {
 
   return (
     <ProductContext.Provider value={{ products }}>
-      { !products ? <p>Loading...</p> : children }
+      { !products ? (
+        <div className="flex justify-center items-center gap-4 h-svh">
+          <span class="loader"></span>
+          <p className="font-bold text-3xl">Loading</p>
+        </div>
+      ) : children }
     </ProductContext.Provider>
   )
 };
