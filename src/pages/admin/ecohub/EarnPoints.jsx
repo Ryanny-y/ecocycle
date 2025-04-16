@@ -10,7 +10,7 @@ const EarnPoints = () => {
   useResetNav();
 
   const { accessToken } = useContext(authContext);
-  const { globalRecordData } = useContext(GlobalContext);
+  const { globalRecordData, setGlobalRecordData } = useContext(GlobalContext);
   
   const { materials } = useContext(MaterialContext);
   const [ openModal, setOpenModal ] = useState(false);
@@ -116,6 +116,8 @@ const EarnPoints = () => {
       }));
       
       setOpenModal(true);
+      if(!globalRecordData) setGlobalRecordData(data);
+
       setResponseData(data);
     } catch (error) {
       alert(error);

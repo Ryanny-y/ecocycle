@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useFetchData from "../../../utils/hooks/useFetchData";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import formatName from '../../../utils/helpers/formatName'
 import useResetNav from "../../../utils/hooks/useResetNav";
+import useSearchData from "../../../utils/hooks/useSearchData";
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -26,37 +27,16 @@ const RecordDash = () => {
     }
   }, [data, loading, error]);
 
-
   const [searchTerm, setSearchTerm] = useState('');
-  const debounceTimeOut = useRef(null);
   // DEBOUNCING
-  useEffect(() => {
-    if(!data) return;
+  const filterFn = useCallback((data, value) => {
+    const fullname = `${data?.first_name} ${data?.middle_name} ${data?.last_name}`.toLowerCase();
+    
+    const foundByName = fullname.includes(value);
+    return foundByName || data?._id.toLowerCase().includes(value);
+  }, []);
 
-    if(debounceTimeOut.current) {
-      clearTimeout(debounceTimeOut.current);
-    }
-
-    debounceTimeOut.current = setTimeout(() => {
-      const value = searchTerm.toLowerCase();
-
-      if(!value) {
-        setRecords(data);
-      } else {
-        const records = data.filter(record => {
-          const fullname = `${record.first_name} ${record.middle_name} ${record.last_name}`.toLowerCase();
-          
-          const foundByName = fullname.includes(value);
-          return foundByName || record._id.toLowerCase().includes(value);
-        })
-        setRecords(records)
-      }
-    }, 300);
-
-    return () => {
-      clearTimeout(debounceTimeOut.current);
-    }
-  }, [data, searchTerm])
+  useSearchData(data, setRecords, searchTerm, filterFn)
 
   return (
     <section id="record_dashboard">

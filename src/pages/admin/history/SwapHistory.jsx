@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useFetchData from "../../../utils/hooks/useFetchData";
 import formatName from "../../../utils/helpers/formatName";
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import useResetNav from "../../../utils/hooks/useResetNav";
+import useSearchData from "../../../utils/hooks/useSearchData";
 
 dayjs.extend(utc);
 
@@ -15,16 +16,37 @@ const SwapHistory = () => {
   const url = import.meta.env.VITE_API_URL;
   const { data, loading, error } = useFetchData(`${url}/history/swapLogs`);
 
+  const [ searchTerm, setSearchTerm ] = useState('');
+
   useEffect(() => {
     if(data && !loading && !error) {
       setSwapProducts(data)
     }
   }, [data, loading, error])
 
+  const filterFn = useCallback((data, value) => {
+      const fullname = `${data?.submitted_by.first_name} ${data?.submitted_by.middle_name} ${data?.submitted_by.last_name}`.toLowerCase();
+      
+      const foundByName = fullname.includes(value);
+      return foundByName || data?.points_earned < Number(value);
+    }, []);
+    
+    useSearchData(data, setSwapProducts, searchTerm, filterFn);
+
   return (
     <section id="user_dashboard">
-      <div className="flex items-center justify-between mb-2">
-        <h1 className="font-bold text-2xl tracking-wide">Record History</h1>
+      <div className="flex flex-col items-start gap-5 md:gap-20 sm:flex-row sm:items-center sm:justify-between mb-2">
+        <h1 className="font-bold text-2xl tracking-wide">Swap History</h1>
+
+        <div className="w-full relative md:grow-0 md:w-96 bg-white px-3 flex rounded-md items-center gap-2">
+          <box-icon name='search' className="absolute"></box-icon>
+          <input 
+            type="text" 
+            placeholder="Search"  
+            className="bg-transparent ml-8 outline-none rounded-md w-full py-2" 
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
 
       <div>
