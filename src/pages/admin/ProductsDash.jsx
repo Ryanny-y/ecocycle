@@ -31,7 +31,7 @@ const ProductsDash = () => {
           className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"
           onClick={() => setShowCreateProduct(true)}
         >
-          Create New Product
+          Add Product
         </button>
       </div>
 

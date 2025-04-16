@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router";
 import '../../../assets/styles/style.css';
 import { FiPackage } from "react-icons/fi";
-import { FaHistory } from "react-icons/fa";
+import { FaHistory, FaRecycle } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import Logout from '../../../pages/auth/Logout';
 import { GlobalContext } from "../../../utils/contexts/GlobalProvider";
@@ -149,6 +149,19 @@ const DashSideNav = () => {
                             </div>
                             
                             <p className="text-sm ml-2 md:text-lg">Products</p>
+                          </div>
+                      </Link>
+                  </li>
+
+                  {/* MATERIALS */}
+                  <li>
+                      <Link to="/admin/materials" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
+                          <div className="flex items-center">
+                            <div className="h-12 flex items-center">
+                              <FaRecycle className="text-lg md:text-xl w-10 md:w-14 lg:w-16 h-7"/>
+                            </div>
+                            
+                            <p className="text-sm ml-2 md:text-lg">Materials</p>
                           </div>
                       </Link>
                   </li>

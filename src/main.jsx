@@ -26,6 +26,7 @@ import Landing from './pages/main/Landing';
 import AuthProvider from './utils/contexts/AuthProvider'
 import ProductProvider from './utils/contexts/ProductProvider';
 import NotFound404 from './pages/NotFound404';
+import Materials from './pages/admin/Materials';
 
 const router = createBrowserRouter([
   {
@@ -87,7 +88,11 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <ProductsDash />
-      }
+      },
+      {
+        path: 'materials',
+        element: <Materials />
+      },
     ]
   },
   {
