@@ -1,80 +1,15 @@
-// pages/EcoSwapPage.jsx
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ProductCategory from "../../components/ui/main/ProductCategory";
 import useScrollTop from "../../utils/hooks/useScrollTop";
 import { ProductContext } from '../../utils/contexts/ProductProvider';
 
-const agricultureItems = [
-  {
-    id: "agri-1",
-    image: "imgStore/okra.jpg",
-    title: "Okra",
-    description: "A green pod vegetable that is rich in vitamins and minerals.",
-    points: 25,
-  },
-  {
-    id: "agri-2",
-    image: "imgStore/cabbage.jpg",
-    title: "Cabbage",
-    description: "A leafy green vegetable that is low in calories",
-    points: 25,
-  },
-  {
-    id: "agri-3",
-    image: "imgStore/eggplant.jpg",
-    title: "Eggplant",
-    description: "A purple vegetable that is rich in fiber and antioxidants.",
-    points: 25,
-  },
-  {
-    id: "agri-4",
-    image: "imgStore/squash.jpg",
-    title: "Pumpkin",
-    description:
-      "A round orange vegetable that is rich in vitamins and minerals.",
-    points: 25,
-  },
-];
-
-const nonAgricultureItems = [
-  {
-    id: "nonagri-1",
-    image: "imgStore/rag.jpg",
-    title: "Rag",
-    description: "A piece of cloth that is used for cleaning",
-    points: 25,
-  },
-  {
-    id: "nonagri-2",
-    image: "imgStore/glassjar.jpg",
-    title: "Glass jar",
-    description: "A container made of glass that is used for storing food.",
-    points: 25,
-  },
-  {
-    id: "nonagri-3",
-    image: "imgStore/container.jpg",
-    title: "Container",
-    description: "A receptacle for holding liquids or solids.",
-    points: 25,
-  },
-  {
-    id: "nonagri-4",
-    image: "imgStore/clothbag.jpg",
-    title: "Cloth bag",
-    description: "A bag made of cloth that is used for carrying items.",
-    points: 25,
-  },
-];
-
 const MainEcoswap = () => {
-
 
   useScrollTop();
 
   const { products } = useContext(ProductContext)
   
-  const agriCultureProducts = products.filter(product => product.category === 'crops');
+  const agriCultureProducts = products.filter(product => product.category === 'agriculture');
   const nonAgriCultureProducts = products.filter(product => product.category === 'non_agriculture');
 
   return (

@@ -7,7 +7,7 @@ const ProductCategory = ({ title, bgColor, items }) => {
         <h1 className="text-xl font-bold sm:text-3xl md:text-4xl lg:text-3xl text-center">{title}</h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full h-full p-5 place-items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full p-5 place-items-stretch">
         {items.map((item) => (
           <ProductCard key={item._id} {...item} />
         ))}

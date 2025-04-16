@@ -1,9 +1,34 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { authContext } from '../../../utils/contexts/AuthProvider';
+import { FaCamera } from "react-icons/fa";
 
 const CreateRecordDash = () => {
 
-  const { accessToken } = useContext(authContext) 
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [ takePhoto, setTakePhoto ] = useState(false);
+  const [ hasCapturedImg, setHasCapturedImg ] = useState(false);
+
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        if(videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      })
+      .catch(err => {
+        console.log('Error Accessing Camera: ');
+      });
+  }, []);
+
+  const handleCapture = () => {
+    const context = canvasRef.current.getContext('2d');
+    context.drawImage(videoRef.current, 0, 0, 300, 200);
+    setHasCapturedImg(true);
+    const imageData = canvasRef.current.toDataURL('image/png');
+  }
+
+  const { accessToken } = useContext(authContext);
 
   const [formField, setFormField] = useState({
     first_name: "",
@@ -151,6 +176,33 @@ const CreateRecordDash = () => {
             value={formField.address}
             onChange={handleField}
           />
+
+          <div id="photo_capture" className="flex flex-col gap-3 items-start justify-center">
+            <button type="button" className="bg-forest text-white py-2 px-5 rounded-md hover:bg-forest-hover" onClick={() => setTakePhoto(prev => !prev)}>Take Photo</button>
+
+            <div className={`${takePhoto ? 'flex' : 'hidden'} flex-col md:flex-row gap-3`}>
+              <div className="vid_wrapper relative">
+                <video 
+                  ref={videoRef} 
+                  className="border border-black max-w-[300px]" 
+                  // width={300} 
+                  // height={300} 
+                  autoPlay
+                ></video>
+
+                <button type="button" onClick={handleCapture} className="bg-forest absolute bottom-3 left-1/2 -translate-x-1/2 text-white p-3 hover:bg-forest-hover rounded-full">
+                  <FaCamera className="text-white text-lg"/>
+                </button>
+              </div>
+          
+            
+              <canvas 
+                ref={canvasRef} 
+                className={`border border-black ${hasCapturedImg ? 'block' : 'hidden'} max-w-[300px]`} 
+                height={200}
+              />
+            </div>
+          </div>
         </div>
 
         <button className="bg-forest self-center text-white py-2 px-5 rounded-md hover:bg-forest-hover">
