@@ -34,12 +34,13 @@ const DashSideNav = () => {
         {/* <!-- Overlay (mobile only) --> */}
         <div id="overlay" className={`fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden ${mobileToggle ? '' : 'hidden'}`} onClick={() => setMobileToggle(false)}></div>
 
+
         {/* <!-- Sidebar --> */}
-        <nav id="Mobile-menu" className={`
-            fixed
+        <nav id="Mobile-menu" className={`fixed
             top-0 left-0
-            bottom-0
             lg:pt-0
+            bottom-0
+            overflow-y-auto
             w-4/5
             transform lg:transform-none
             ${mobileToggle ? '' : '-translate-x-full'} lg:translate-x-0
@@ -50,7 +51,8 @@ const DashSideNav = () => {
             transition-transform duration-300 ease-in-out
             flex flex-col
             lg:w-[300px]
-        `}>
+            hide-scrollbar
+            `}>
             {/* <!-- Desktop Logo --> */}
             <Link to="/" className="hidden lg:flex items-center p-4 border-b border-white/20">
                 <img src="/logos/logo.png" alt="NSTP Logo" className="w-14 object-contain lg:w-20 lg:h-14"/>
@@ -68,12 +70,14 @@ const DashSideNav = () => {
 
             {/* <!-- Menu Content --> */}
             <div className="flex flex-col h-full items-center">
-              <ul className="flex flex-col text-white w-full px-3 hide-scrollbar">
+              <ul className="flex flex-col text-white w-full px-3">
                   {/* <!-- Overview --> */}
                   <li>
                       <Link to="/admin/overview" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                           <div className="flex items-center">
-                            <MdOutlineDashboard className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
+                            <div className="h-12 flex items-center">
+                              <MdOutlineDashboard className="text-lg md:text-xl w-10 md:w-14 lg:w-16 h-7"/>
+                            </div>
                             <p className="text-sm ml-2 md:text-lg">Overview</p>
                           </div>
                       </Link>
@@ -120,7 +124,9 @@ const DashSideNav = () => {
                   <li>
                     <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                         <div className="flex items-center">
-                            <FaHistory className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
+                            <div className="h-12 flex items-center">
+                              <FaHistory className="text-lg md:text-xl w-10 md:w-14 lg:w-16 h-7"/>
+                            </div>
                             <p className="text-sm ml-2 md:text-lg">History</p>
                         </div>
                         <div className="icon w-8 h-8 md:w-10 md:h-10">
@@ -138,8 +144,11 @@ const DashSideNav = () => {
                   <li>
                       <Link to="/admin/products" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                           <div className="flex items-center">
-                              <FiPackage className="text-lg md:text-2xl w-10 md:w-14 lg:w-16"/>
-                              <p className="text-sm ml-2 md:text-lg">Products</p>
+                            <div className="h-12 flex items-center">
+                              <FiPackage className="text-lg md:text-xl w-10 md:w-14 lg:w-16 h-7"/>
+                            </div>
+                            
+                            <p className="text-sm ml-2 md:text-lg">Products</p>
                           </div>
                       </Link>
                   </li>
