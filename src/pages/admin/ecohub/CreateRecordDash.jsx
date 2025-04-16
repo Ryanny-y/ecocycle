@@ -1,8 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { authContext } from '../../../utils/contexts/AuthProvider';
 import { FaCamera } from "react-icons/fa";
+import useResetNav from "../../../utils/hooks/useResetNav";
 
 const CreateRecordDash = () => {
+
+  useResetNav();
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);

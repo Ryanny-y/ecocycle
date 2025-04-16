@@ -1,8 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../utils/contexts/AuthProvider";
 import { MaterialContext } from '../../../utils/contexts/MaterialProvider';
+import useResetNav from "../../../utils/hooks/useResetNav";
 
 const UpdateRecordDash = () => {
+
+  useResetNav();
+
   const { accessToken } = useContext(authContext) 
   
   const { materials } = useContext(MaterialContext);

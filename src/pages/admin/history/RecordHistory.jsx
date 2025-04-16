@@ -3,11 +3,13 @@ import useFetchData from "../../../utils/hooks/useFetchData";
 import formatName from "../../../utils/helpers/formatName";
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import useResetNav from "../../../utils/hooks/useResetNav";
 
 dayjs.extend(utc);
 
 const RecordHistory = () => {
 
+  useResetNav();
   const [ recycleSubmissions, setRecycleSubmissions ] = useState([]);
 
   const url = import.meta.env.VITE_API_URL;

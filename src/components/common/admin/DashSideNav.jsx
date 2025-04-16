@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import '../../../assets/styles/style.css';
 import { FiPackage } from "react-icons/fi";
 import { FaHistory } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import Logout from '../../../pages/auth/Logout';
+import { GlobalContext } from "../../../utils/contexts/GlobalProvider";
 
 const DashSideNav = () => {
-  const [ mobileToggle, setMobileToggle ] = useState(false);
+  const { mobileToggle, setMobileToggle } = useContext(GlobalContext);
 
   const toggleMenu = (e) => {
     const icon = e.currentTarget.querySelector('.icon');

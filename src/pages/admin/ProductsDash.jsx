@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import useFetchData from "../../utils/hooks/useFetchData";
 import CreateProduct from "../../components/ui/admin/CreateProduct";
+import useResetNav from "../../utils/hooks/useResetNav";
 
 const ProductsDash = () => {
 
+  useResetNav();
   const [ products, setProducts ] = useState([]);
   const [ refetch, setRefetch ] = useState(false);
 

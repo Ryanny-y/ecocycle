@@ -4,11 +4,15 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import formatName from '../../../utils/helpers/formatName'
+import useResetNav from "../../../utils/hooks/useResetNav";
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
 const RecordDash = () => { 
+
+  useResetNav();
+
   const [records, setRecords] = useState([]);
   const [ newRecords, setNewRecord ] = useState([]);
 

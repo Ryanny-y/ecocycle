@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { ProductContext } from "../../utils/contexts/ProductProvider";
 import { authContext } from "../../utils/contexts/AuthProvider";
 import formatName from '../../utils/helpers/formatName';
+import useResetNav from "../../utils/hooks/useResetNav";
 
 const EcoSwap = () => {
 
+  useResetNav();
   const { accessToken } = useContext(authContext);
   const { products } = useContext(ProductContext);
   const url = import.meta.env.VITE_API_URL;
