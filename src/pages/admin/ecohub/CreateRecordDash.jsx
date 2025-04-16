@@ -3,6 +3,7 @@ import { authContext } from '../../../utils/contexts/AuthProvider';
 import { FaCamera } from "react-icons/fa";
 import useResetNav from "../../../utils/hooks/useResetNav";
 import Modal from "../../../components/ui/admin/Modal";
+import { GlobalContext } from "../../../utils/contexts/GlobalProvider";
 
 const CreateRecordDash = () => {
 
@@ -35,6 +36,7 @@ const CreateRecordDash = () => {
   const [ openModal, setOpenModal ] = useState(false);
   const [ responseData, setResponseData ] = useState(null);
 
+  const { setGlobalRecordData } = useContext(GlobalContext);
   const { accessToken } = useContext(authContext);
 
   const [formField, setFormField] = useState({
@@ -114,6 +116,7 @@ const CreateRecordDash = () => {
       });
       setOpenModal(true);
       setResponseData({record_id: data.record_id, last_name: last_name});
+      setGlobalRecordData({record_id: data.record_id, last_name: last_name});
     } catch (error) {
       alert(error)
     }

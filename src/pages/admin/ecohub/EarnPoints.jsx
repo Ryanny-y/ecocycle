@@ -2,18 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../utils/contexts/AuthProvider";
 import { MaterialContext } from '../../../utils/contexts/MaterialProvider';
 import useResetNav from "../../../utils/hooks/useResetNav";
+import { GlobalContext } from "../../../utils/contexts/GlobalProvider";
+import Modal from '../../../components/ui/admin/Modal';
 
 const EarnPoints = () => {
 
   useResetNav();
 
-  const { accessToken } = useContext(authContext) 
+  const { accessToken } = useContext(authContext);
+  const { globalRecordData } = useContext(GlobalContext);
   
   const { materials } = useContext(MaterialContext);
+  const [ openModal, setOpenModal ] = useState(false);
+  const [ responseData, setResponseData ] = useState(null);
   
   const [formField, setFormField] = useState({
-    record_id: "",
-    last_name: "",
+    record_id: globalRecordData?.record_id || "",
+    last_name: globalRecordData?.last_name || "",
     materials: [],
     points: 0
   });
@@ -110,7 +115,8 @@ const EarnPoints = () => {
         points: 0
       }));
       
-      alert(data.message);
+      setOpenModal(true);
+      setResponseData(data);
     } catch (error) {
       alert(error);
     }
@@ -194,6 +200,20 @@ const EarnPoints = () => {
           Confirm
         </button>
       </form>
+
+      <Modal 
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        title="Earn Points"
+        content={
+          <>
+            <p>Record: {responseData?.last_name} ({responseData?.record_id}) earned {responseData?.earned_points} points</p>
+            <p className="font-semibold">Current Points: {(responseData?.current_points).toFixed(2)}</p>
+          </>
+        }
+        proceedText="Swap Product"
+        proceedHref="/admin/ecoswap"
+      />
     </section>
   )
 };

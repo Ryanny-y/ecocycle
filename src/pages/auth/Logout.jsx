@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { authContext } from "../../utils/contexts/AuthProvider";
+import { GlobalContext } from "../../utils/contexts/GlobalProvider";
 
 const Logout = ({ moreClass }) => {
 
   const { setUserData, setAccessToken, setIsAuthenticated } = useContext(authContext);
-  
+  const { setGlobalRecordData } = useContext(GlobalContext);
 
   const url = import.meta.env.VITE_API_URL;
   const handleLogout = async () => {
@@ -19,6 +20,7 @@ const Logout = ({ moreClass }) => {
       }
 
       setUserData(null);
+      setGlobalRecordData(null);
       setAccessToken('');
       setIsAuthenticated(false)
     } catch (error) {

@@ -5,13 +5,12 @@ export const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
 
-  const [ recordData, setRecordData ] = useState(null);
-
+  const [ globalRecordData, setGlobalRecordData ] = useState(null);
   const [ mobileToggle, setMobileToggle ] = useState(false);
 
 
   const value = {
-    recordData, setRecordData,
+    globalRecordData, setGlobalRecordData,
     mobileToggle, setMobileToggle
   }
 

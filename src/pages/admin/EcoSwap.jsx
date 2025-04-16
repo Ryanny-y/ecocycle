@@ -3,11 +3,13 @@ import { ProductContext } from "../../utils/contexts/ProductProvider";
 import { authContext } from "../../utils/contexts/AuthProvider";
 import formatName from '../../utils/helpers/formatName';
 import useResetNav from "../../utils/hooks/useResetNav";
+import { GlobalContext } from "../../utils/contexts/GlobalProvider";
 
 const EcoSwap = () => {
 
   useResetNav();
   const { accessToken } = useContext(authContext);
+  const { globalRecordData } = useContext(GlobalContext);
   const { products } = useContext(ProductContext);
   const url = import.meta.env.VITE_API_URL;
   
@@ -17,8 +19,8 @@ const EcoSwap = () => {
 
   const [ quantityInputs, setQuantityinputs ] = useState({})
   const [ formField, setFormField ] = useState({
-    record_id: '',
-    last_name: ''
+    record_id: globalRecordData?.record_id || '',
+    last_name: globalRecordData?.last_name || ''
   });
   
   const handleFindRecord = async () => {
@@ -95,7 +97,7 @@ const EcoSwap = () => {
       }
 
       const data = await response.json();
-      alert(`${data.message}: Current Points: ${recordData.points - totalRequiredPoints}`);
+      alert(`${data.message}: Current Points: ${(recordData.points - totalRequiredPoints).toFixed()}`);
       handleFindRecord();
       setQuantityinputs(prev => ({
         ...prev,
