@@ -58,11 +58,13 @@ const ProductsDash = () => {
               {products.map((product) => (
                 <tr className="even:bg-white" key={product._id}>
                 <td className="text-start py-2 px-2 text-nowrap">{product._id}</td>
-                <td className="text-center py-2 px-2 text-nowrap flex items-center gap-2">
-                  <img src={`${url}/images/${product.image}`} alt="Product Img" className="h-7 w-7"/>
-                  {product.name}
+                <td className="text-center py-2 px-2 text-nowrap">
+                  <div className="flex items-center gap-2 min-w-[150px] max-w-[300px] overflow-hidden text-ellipsis whitespace-nowrap">
+                    <img src={`${url}/images/${product.image}`} alt="Product Img" className="h-7 w-7" />
+                    <span className="truncate">{product.name}</span>
+                  </div>
                 </td>
-                <td className="text-center px-2 text-nowrap">{product.description}</td>
+                <td className="text-center px-2 text-nowrap truncate max-w-[300px]">{product.description}</td>
                 <td className="text-center px-2 text-nowrap">{product.category}</td>
                 <td className="text-center px-2 text-nowrap font-semibold">{product.required_points} Points</td>
               </tr>

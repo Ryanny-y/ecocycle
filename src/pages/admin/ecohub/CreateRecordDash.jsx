@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { authContext } from '../../../utils/contexts/AuthProvider';
 import { FaCamera } from "react-icons/fa";
 import useResetNav from "../../../utils/hooks/useResetNav";
+import Modal from "../../../components/ui/admin/Modal";
 
 const CreateRecordDash = () => {
 
@@ -30,6 +31,9 @@ const CreateRecordDash = () => {
     setHasCapturedImg(true);
     const imageData = canvasRef.current.toDataURL('image/png');
   }
+
+  const [ openModal, setOpenModal ] = useState(false);
+  const [ responseData, setResponseData ] = useState(null);
 
   const { accessToken } = useContext(authContext);
 
@@ -75,6 +79,11 @@ const CreateRecordDash = () => {
       return;
     }
 
+    if(contact_number && contact_number.length !== 11) {
+      alert('Invalid Contact Number');
+      return;
+    }
+
     try {
       const url = import.meta.env.VITE_API_URL;
       const response = await fetch(`${url}/records`, {
@@ -103,7 +112,8 @@ const CreateRecordDash = () => {
         contact_number: "",
         address: "",
       });
-      alert(data.message);
+      setOpenModal(true);
+      setResponseData({record_id: data.record_id, last_name: last_name});
     } catch (error) {
       alert(error)
     }
@@ -180,6 +190,8 @@ const CreateRecordDash = () => {
             onChange={handleField}
           />
 
+          <p className="text-xs md:text-sm">By submitting this form, you agree that your personal information will be collected and used in accordance with the Data Privacy Act (Republic Act No. 10173)</p>
+
           <div id="photo_capture" className="flex flex-col gap-3 items-start justify-center">
             <button type="button" className="bg-forest text-white py-2 px-5 rounded-md hover:bg-forest-hover" onClick={() => setTakePhoto(prev => !prev)}>Take Photo</button>
 
@@ -212,6 +224,20 @@ const CreateRecordDash = () => {
           Create Record
         </button>
       </form>
+
+      <Modal 
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        title='New Record Created'
+        content={
+          <>
+            <p>Record ID: {responseData?.record_id}</p>
+            <p>Last Name: {responseData?.last_name}</p>
+          </>
+        }
+        proceedText="Earn Points"
+        proceedHref="/admin/ecohub/earn_points"
+      />
     </section>
   );
 };

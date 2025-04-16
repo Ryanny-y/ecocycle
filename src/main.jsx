@@ -9,7 +9,7 @@ import App from './App'
 import Login from './pages/auth/Login'
 import DashOverview from './pages/admin/DashOverview'
 import CreateRecordDash from './pages/admin/ecohub/CreateRecordDash';
-import UpdateRecordDash from './pages/admin/ecohub/UpdateRecordDash';
+import EarnPoints from './pages/admin/ecohub/EarnPoints';
 import RecordDash from './pages/admin/ecohub/RecordDash'
 import EcoSwap from './pages/admin/EcoSwap';
 import GreenPages from './pages/admin/GreenPages';
@@ -64,8 +64,8 @@ const router = createBrowserRouter([
         element: <CreateRecordDash />
       },
       {
-        path: 'ecohub/update_record',
-        element: <UpdateRecordDash />
+        path: 'ecohub/earn_points',
+        element: <EarnPoints />
       },
       {
         path: 'ecoswap',

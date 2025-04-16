@@ -93,7 +93,7 @@ const DashSideNav = () => {
                       
                       <div className="submenu overflow-hidden transition-all duration-300 max-h-0">
                           <Link to="/admin/ecohub/create_record" className="block w-full text-sm py-2 pl-16 duration-300 hover:bg-forest-hover md:text-base">Create Record</Link>
-                          <Link to="/admin/ecohub/update_record" className="block w-full text-sm py-2 pl-16 duration-300 hover:bg-forest-hover md:text-base">Earn Points</Link>
+                          <Link to="/admin/ecohub/earn_points" className="block w-full text-sm py-2 pl-16 duration-300 hover:bg-forest-hover md:text-base">Earn Points</Link>
                           <Link to="/admin/ecohub/records" className="block w-full text-sm py-2 pl-16 duration-300 hover:bg-forest-hover md:text-base">Records</Link>
                       </div>
                   </li>

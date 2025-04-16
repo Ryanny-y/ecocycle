@@ -3,7 +3,7 @@ import { authContext } from "../../../utils/contexts/AuthProvider";
 import { MaterialContext } from '../../../utils/contexts/MaterialProvider';
 import useResetNav from "../../../utils/hooks/useResetNav";
 
-const UpdateRecordDash = () => {
+const EarnPoints = () => {
 
   useResetNav();
 
@@ -198,4 +198,4 @@ const UpdateRecordDash = () => {
   )
 };
 
-export default UpdateRecordDash;
+export default EarnPoints;
