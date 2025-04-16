@@ -97,7 +97,7 @@ const EcoSwap = () => {
       }
 
       const data = await response.json();
-      alert(`${data.message}: Current Points: ${(recordData.points - totalRequiredPoints).toFixed()}`);
+      alert(`${data.message}: Current Points: ${(recordData.points - totalRequiredPoints)}`);
       handleFindRecord();
       setQuantityinputs(prev => ({
         ...prev,

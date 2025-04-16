@@ -101,7 +101,7 @@ const RecordDash = () => {
                 <tr className="even:bg-white" key={record._id}>
                   <td className="text-start py-2 px-2 text-nowrap">{record._id}</td>
                   <td className="text-center px-2 text-nowrap">{`${formatName(record)}`}</td>
-                  <td className="text-center px-2 text-nowrap">{(record.points).toFixed(2)}</td>
+                  <td className="text-center px-2 text-nowrap">{record.points}</td>
                   <td className="text-center px-2 text-nowrap">{record.age}</td>
                   <td className="text-center px-2 text-nowrap">{record.contact_number}</td>
                   <td className="text-center px-2 text-nowrap">{record.address}</td>

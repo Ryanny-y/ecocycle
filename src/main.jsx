@@ -25,6 +25,7 @@ import Landing from './pages/main/Landing';
 // PROVIDERS
 import AuthProvider from './utils/contexts/AuthProvider'
 import ProductProvider from './utils/contexts/ProductProvider';
+import NotFound404 from './pages/NotFound404';
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
         element: <ProductsDash />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound404 />
   }
 ])
 

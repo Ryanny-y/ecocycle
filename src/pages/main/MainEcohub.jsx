@@ -98,7 +98,7 @@ const MainEcohub = () => {
 
       {/* modal */}
       {recordData && (
-        <div className="flex flex-col gap-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-forest py-5 px-10 rounded-md">
+        <div className="flex flex-col gap-5 absolute top-1/2 left-1/2 -translate-x-1/2 w-full max-w-[300px] -translate-y-1/2 bg-forest py-5 px-3 md:px-6 rounded-md">
           <div className="flex items-center justify-between">
             <p className="text-xl font-semibold">Record info:</p>
 

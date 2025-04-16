@@ -34,7 +34,7 @@ const Landing = () => {
               alt="Basura-Eco Hub Logo"
             />
 
-            <FaRecycle className="z-10 transition-opacity duration-300 group-hover:opacity-0 text-5xl" />
+            <img src="/logos/basura_eco_hub.png" alt="EcoHub Logo" className="w-20"/>
             <span className="z-10">BASURA-ECO HUB</span>
           </Link>
 
@@ -48,7 +48,8 @@ const Landing = () => {
               className="absolute inset-0 w-full h-full object-cover scale-0 opacity-0 transition duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 bg-white z-20"
               alt="Eco-Swap Logo"
             />
-            <FaExchangeAlt className="z-10 transition-opacity duration-300 group-hover:opacity-0 text-5xl" />
+
+            <img src="/landing/ecoswap.png" alt="EcoHub Logo" className="w-20"/>
             <span className="z-10">ECO-SWAP</span>
           </Link>
         </div>

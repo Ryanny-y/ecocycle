@@ -192,7 +192,7 @@ const EarnPoints = () => {
           <div className="grid grid-cols-4 gap-3 text-xl font-semibold">
             <p className="col-span-3 ">Total Points</p>
 
-            <p>{formField.points.toFixed(2)}</p>
+            <p>{formField.points}</p>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ const EarnPoints = () => {
         content={
           <>
             <p>Record: {responseData?.last_name} ({responseData?.record_id}) earned {responseData?.earned_points} points</p>
-            <p className="font-semibold">Current Points: {(responseData?.current_points).toFixed(2)}</p>
+            <p className="font-semibold">Current Points: {responseData?.current_points}</p>
           </>
         }
         proceedText="Swap Product"

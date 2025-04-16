@@ -1,0 +1,1 @@
+export const formatCurrency = points => points.toFixed(2);
