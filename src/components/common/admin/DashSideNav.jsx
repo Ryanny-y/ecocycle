@@ -87,9 +87,12 @@ const DashSideNav = () => {
                   <li>
                       <div className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
                           <div className="flex items-center">
-                              <img src="/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
+                              <div className="h-12 flex items-center">
+                                <img src="/logos/basura_eco_hub.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-7"/>
+                              </div>
                               <p className="text-sm ml-2 md:text-lg">Basura Eco Hub</p>
                           </div>
+
                           <div className="icon w-8 h-8 md:w-10 md:h-10">
                             <box-icon name="chevron-down" className="w-full h-full" color="white"></box-icon>
                           </div>
@@ -105,18 +108,24 @@ const DashSideNav = () => {
                   {/* <!-- EcoSwap --> */}
                   <li>
                     <Link to="/admin/ecoswap" className="flex items-center py-2 hover:bg-forest-hover duration-300">
-                        <img src="/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 pl-3 lg:w-16 md:h-12"/>
+                      <div className="flex items-center">
+                        <div className="h-12 flex items-center">
+                          <img src="/logos/ecoswap.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-7"/>
+                        </div>
                         <p className="text-sm ml-2 md:text-lg">EcoSwap</p>
+                      </div>
                     </Link>
                   </li>
 
                   {/* <!-- Green Pages --> */}
                   <li>
                       <Link to="/admin/green_pages" className="menu-header flex items-center justify-between cursor-pointer lg:cursor-auto py-2 hover:bg-forest-hover duration-300" onClick={toggleMenu}>
-                          <div className="flex items-center">
-                              <img src="/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-12"/>
-                              <p className="text-sm ml-2 md:text-lg">Green Pages</p>
+                        <div className="flex items-center">
+                          <div className="h-12 flex items-center">
+                            <img src="/logos/green_pages.png" alt="" className="w-10 object-contain md:w-14 lg:w-16 md:h-7"/>
                           </div>
+                          <p className="text-sm ml-2 md:text-lg">Green Pages</p>
+                        </div>
                       </Link>
                   </li>
 
