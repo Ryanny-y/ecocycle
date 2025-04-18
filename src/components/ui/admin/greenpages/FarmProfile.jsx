@@ -1,7 +1,7 @@
 import novaImage from '../../../../assets/images/nova.jpg';
 import Directory from './Directory';
 
-const FarmProfile = ({ farmInfo }) => {
+const FarmProfile = ({ farmInfo, staffList }) => {
   return (
     <>
       <div className="bg-white shadow-lg px-5 py-5 rounded-md flex flex-col gap-2">
@@ -21,7 +21,7 @@ const FarmProfile = ({ farmInfo }) => {
         </div>
       </div>
 
-      <Directory />
+      <Directory staffList={staffList} farmName={farmInfo.name}/>
     </>
     
   )

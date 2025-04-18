@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useResetNav from "../../utils/hooks/useResetNav";
 import Map from "../../components/ui/admin/greenpages/Map";
 import FarmProfile from "../../components/ui/admin/greenpages/FarmProfile";
 import SkillMap from "../../components/ui/admin/greenpages/SkillMap";
+import useFetchData from '../../utils/hooks/useFetchData'
+
 
 const farmProfiles = [
   {
@@ -25,7 +27,7 @@ const farmProfiles = [
   },
   {
     id: 'farm_3',
-    name: 'Mendoza Park',
+    name: 'Mendoza Urban Farm',
     size: '200 sqm.',
     age: 5,
     type: 'Backyard Garden, Vertical Garden, Greenhouse',
@@ -41,6 +43,19 @@ const GreenPages = () => {
   
   const [ farmSelectedId, setFarmSelectedId ] = useState('farm_1');
   const selectedFarm = farmProfiles.find(farm => farm.id === farmSelectedId);
+  const [ staffList, setStaffList ] = useState([]);
+
+  const url = import.meta.env.VITE_API_URL;
+  const { data, loading, error } = useFetchData(`${url}/staffs`);
+
+  useEffect(() => {
+    if(data && !loading && !error) {
+      console.log(data);
+      setStaffList(data);
+    }
+
+  }, [data, loading, error])
+
 
   const [ showSection, setShowSection ] = useState({
     farm_profile: true,
@@ -70,8 +85,8 @@ const GreenPages = () => {
         </div>
 
         <div id="details">
-          {showSection.farm_profile && <FarmProfile farmInfo={selectedFarm}/>}
-          {showSection.skill_map && <SkillMap />}
+          {showSection.farm_profile && <FarmProfile farmInfo={selectedFarm} staffList={staffList}/>}
+          {showSection.skill_map && <SkillMap staffList={staffList} farmName={selectedFarm.name}/>}
         </div>
       </section>
     </main>
