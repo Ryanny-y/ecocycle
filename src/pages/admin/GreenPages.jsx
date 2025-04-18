@@ -77,10 +77,10 @@ const GreenPages = () => {
       </section>
       
       <section className="flex-1">
-        <div id="top" className="grid grid-cols-1 text-2xl gap-2 md:grid-cols-3 md:text-xl font-bold mb-2 text-start items-start justify-items-start">
-          <button className={`hover:text-forest duration-300 ${showSection.farm_profile ? 'text-forest' : ''}`} onClick={() => handleSectionChange('farm_profile')}>Farm Profile</button>
-          <button className={`hover:text-forest duration-300 ${showSection.skill_map ? 'text-forest' : ''}`} onClick={() => handleSectionChange('skill_map')}>Skill Map</button>
-          <button className={`hover:text-forest duration-300 ${showSection.statistics ? 'text-forest' : ''}`} onClick={() => handleSectionChange('statistics')}>Statistics</button>
+        <div id="top" className="flex items-center flex-wrap gap-5 text-2xl md:text-xl font-bold mb-2 text-start justify-around">
+          <button className={`hover:text-forest duration-300 text-nowrap ${showSection.farm_profile ? 'text-forest' : ''}`} onClick={() => handleSectionChange('farm_profile')}>Farm Profile</button>
+          <button className={`hover:text-forest duration-300 text-nowrap ${showSection.skill_map ? 'text-forest' : ''}`} onClick={() => handleSectionChange('skill_map')}>Skill Map</button>
+          <button className={`hover:text-forest duration-300 text-nowrap ${showSection.statistics ? 'text-forest' : ''}`} onClick={() => handleSectionChange('statistics')}>Statistics</button>
         </div>
 
         <div id="details">
