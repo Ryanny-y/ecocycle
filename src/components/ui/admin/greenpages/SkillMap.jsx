@@ -28,10 +28,10 @@ const SkillMap = ({ staffList, farmName }) => {
               key={staff._id}
               className="border border-forest relative z-10 text-black p-3 rounded-lg"
             >
-              <p><span class="font-bold">Name:</span> {staff.name}</p>
-              <p><span class="font-bold">Skill:</span> {staff.skills.join(', ')}</p>
-              <p><span class="font-bold">Farm:</span> {staff.assigned_farm.join(', ')}</p>
-              <p><span class="font-bold">Contact No:</span> {staff?.contact_number}</p>
+              <p><span class="font-bold text-forest">Name:</span> {staff.name}</p>
+              <p><span class="font-bold text-forest">Skill:</span> {staff.skills.join(', ')}</p>
+              <p><span class="font-bold text-forest">Farm:</span> {staff.assigned_farm.join(', ')}</p>
+              <p><span class="font-bold text-forest">Contact No:</span> {staff?.contact_number}</p>
             </div>
           ))
         ) : (

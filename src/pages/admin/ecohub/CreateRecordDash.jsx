@@ -15,7 +15,10 @@ const CreateRecordDash = () => {
   const [ hasCapturedImg, setHasCapturedImg ] = useState(false);
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ 
+      video: { 
+        facingMode: { exact: "environment" } 
+      }})
       .then((stream) => {
         if(videoRef.current) {
           videoRef.current.srcObject = stream;

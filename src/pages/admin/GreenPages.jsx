@@ -50,7 +50,6 @@ const GreenPages = () => {
 
   useEffect(() => {
     if(data && !loading && !error) {
-      console.log(data);
       setStaffList(data);
     }
 
@@ -72,16 +71,16 @@ const GreenPages = () => {
   };
 
   return (
-    <main className="flex gap-3">
+    <main className="flex flex-col md:flex-row gap-3">
       <section className="flex-1">
         <Map setFarmSelectedId={setFarmSelectedId}/>
       </section>
       
       <section className="flex-1">
-        <div id="top" className="grid grid-cols-3 text-xl font-bold mb-2">
-          <button className={`hover:text-forest duration-300 ${showSection.farm_profile ? 'text-forest underline' : ''}`} onClick={() => handleSectionChange('farm_profile')}>Farm Profile</button>
-          <button className={`hover:text-forest duration-300 ${showSection.skill_map ? 'text-forest underline' : ''}`} onClick={() => handleSectionChange('skill_map')}>Skill Map</button>
-          <button className={`hover:text-forest duration-300 ${showSection.statistics ? 'text-forest underline' : ''}`} onClick={() => handleSectionChange('statistics')}>Statistics</button>
+        <div id="top" className="grid grid-cols-1 text-2xl gap-2 md:grid-cols-3 md:text-xl font-bold mb-2 text-start items-start justify-items-start">
+          <button className={`hover:text-forest duration-300 ${showSection.farm_profile ? 'text-forest' : ''}`} onClick={() => handleSectionChange('farm_profile')}>Farm Profile</button>
+          <button className={`hover:text-forest duration-300 ${showSection.skill_map ? 'text-forest' : ''}`} onClick={() => handleSectionChange('skill_map')}>Skill Map</button>
+          <button className={`hover:text-forest duration-300 ${showSection.statistics ? 'text-forest' : ''}`} onClick={() => handleSectionChange('statistics')}>Statistics</button>
         </div>
 
         <div id="details">
