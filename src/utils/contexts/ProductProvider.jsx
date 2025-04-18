@@ -22,7 +22,7 @@ const ProductProvider = ({ children }) => {
     <ProductContext.Provider value={{ products }}>
       { !products ? (
         <div className="flex justify-center items-center gap-4 h-svh">
-          <span class="loader"></span>
+          <span className="loader"></span>
           <p className="font-bold text-3xl">Loading</p>
         </div>
       ) : children }
