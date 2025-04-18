@@ -4,6 +4,7 @@ import Map from "../../components/ui/admin/greenpages/Map";
 import FarmProfile from "../../components/ui/admin/greenpages/FarmProfile";
 import SkillMap from "../../components/ui/admin/greenpages/SkillMap";
 import useFetchData from '../../utils/hooks/useFetchData'
+import Statistics from "../../components/ui/admin/greenpages/Statistics";
 
 
 const farmProfiles = [
@@ -86,6 +87,7 @@ const GreenPages = () => {
         <div id="details">
           {showSection.farm_profile && <FarmProfile farmInfo={selectedFarm} staffList={staffList}/>}
           {showSection.skill_map && <SkillMap staffList={staffList} farmName={selectedFarm.name}/>}
+          {showSection.statistics && <Statistics staffList={staffList}/>}
         </div>
       </section>
     </main>
