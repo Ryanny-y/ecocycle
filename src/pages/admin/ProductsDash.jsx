@@ -14,8 +14,6 @@ const ProductsDash = () => {
 
   useEffect(() => {
     if(data && !error && !loading) {
-      console.log(data);
-      
       setProducts(data);
     }
   }, [data, loading, error]);

@@ -42,11 +42,4 @@ const SkillMap = ({ staffList, farmName }) => {
   );
 };
 
-{
-  /* <p>Name: </p>
-<p>Skill: </p>
-<p>Farm: </p>
-<p>Contact No: </p> */
-}
-
 export default SkillMap;

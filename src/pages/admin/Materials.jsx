@@ -25,7 +25,7 @@ const Materials = () => {
   return (
     <main id="user_dashboard">
       <div className="flex items-center justify-between mb-2">
-        <h1 className="font-bold text-2xl tracking-wide">Products</h1>
+        <h1 className="font-bold text-2xl tracking-wide">Materials</h1>
 
         <button
           className="bg-forest hover:bg-opacity-90 rounded-md duration-400 text-white py-2 px-4"

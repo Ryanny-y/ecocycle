@@ -1,5 +1,4 @@
 // components/BarChart.js
-import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import useWindowResize from '../../../utils/hooks/useWindowResize';
 import {
@@ -36,7 +35,11 @@ const BarChart = ({ labels, data, title }) => {
         backgroundColor: [
           'rgba(255, 99, 132, 0.6)',
           'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)'
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(23, 206, 66, 0.6)',
+          'rgba(215, 126, 86, 0.6)',
+          'rgba(160, 50, 226, 0.6)',
+          'rgba(120, 56, 26, 0.6)',
         ],
         borderWidth: 1
       }
@@ -87,7 +90,7 @@ const BarChart = ({ labels, data, title }) => {
 
   return (
     <div className="overflow-x-auto">
-      <div className="w-[90%] h-[350px] md:max-w-[500px]"> {/* Decrease the min-width here */}
+      <div className="w-[90%] h-[350px] md:max-w-[500px]">
         <Bar data={chartData} options={options} />
       </div>
     </div>
