@@ -12,7 +12,16 @@ const getRandomColor = () => {
   return color;
 };
 
-const DoughnutChart = ({ labels }) => {
+const DoughnutChart = ({ staffList }) => {
+
+  const ageMap = staffList.reduce((acc, staff) => {
+    const age = staff.age;
+    acc[age] = (acc[age] || 0) + 1;
+    return acc;
+  }, {});
+
+  const values = Object.keys(ageMap); // ages
+  const labels = Object.values(ageMap); // counts per age
 
   const backgroundColors = labels.map(() => getRandomColor());
 
@@ -21,7 +30,7 @@ const DoughnutChart = ({ labels }) => {
     datasets: [
       {
         label: "Age",
-        data: labels,
+        data: values,
         backgroundColor: backgroundColors,
         borderWidth: 1,
       },

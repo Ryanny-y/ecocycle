@@ -21,6 +21,7 @@ const Statistics = ({ staffList }) => {
   });
 
   const allAges = staffList.map(staff => staff.age);
+  
   const genderCounts = staffList.reduce((acc, staff) => {
     const gender = staff.gender.toLowerCase();
 
@@ -36,7 +37,7 @@ const Statistics = ({ staffList }) => {
       <div className="flex flex-col">
         <BarChart labels={staffLabel} data={farmCounts} title={"Member Each Farm"}/>
         <BarChart labels={allSkills} data={skillCount} title={"Skills Count"}/>
-        <DoughnutChart labels={allAges} />
+        <DoughnutChart staffList={staffList} />
         <PieChart dataVal={genderCounts} />
       </div>
     </div>
