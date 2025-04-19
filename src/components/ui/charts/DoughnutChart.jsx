@@ -20,8 +20,8 @@ const DoughnutChart = ({ staffList }) => {
     return acc;
   }, {});
 
-  const values = Object.keys(ageMap); // ages
-  const labels = Object.values(ageMap); // counts per age
+  const values = Object.values(ageMap); // counts per age
+  const labels = Object.keys(ageMap); // ages
 
   const backgroundColors = labels.map(() => getRandomColor());
 
