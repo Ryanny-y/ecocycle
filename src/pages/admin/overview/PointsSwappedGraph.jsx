@@ -6,19 +6,20 @@ import localeData from 'dayjs/plugin/localeData'
 
 dayjs.extend(localeData);
 
-const PointsEarnedGraph = ({ url }) => {
+const PointsSwappedGraph = ({ url }) => {
   
   const monthNames = dayjs.months(); // ["January", "February", ..., "December"]
 
-  const { data, loading, error} = useFetchData(`${url}/history/recordLogs`);
+  const { data, loading, error} = useFetchData(`${url}/history/swapLogs`);
   const [ recordData, setRecordData ] = useState();
 
   useEffect(() => {
     if(data && !loading && !error) {
+      
       const datas = monthNames.map((month, index) => {
         const totalPoints = data.reduce((acc, record) => {
           const recordMonth = dayjs(record.created_at).month();
-          return recordMonth === index ? acc + (record.points_earned || 0) : 0;
+          return recordMonth === index ? acc + (record.points_deducted || 0) : 0;
         }, 0);
     
         return {
@@ -31,7 +32,7 @@ const PointsEarnedGraph = ({ url }) => {
     }
   }, [data, loading, error])
 
-  return recordData && <LineChart datas={recordData} graphTitle={"Points Earned Over Time"}/>
+  return recordData && <LineChart datas={recordData} graphTitle={"Points Swapped Over Time"}/>
 }
 
-export default PointsEarnedGraph;
+export default PointsSwappedGraph;

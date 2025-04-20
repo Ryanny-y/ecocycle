@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ datas }) => {
+const LineChart = ({ datas, graphTitle }) => {
 
   const labels = datas.map(obj => Object.values(obj)[0]);
   const dataVal = datas.map(obj => Object.values(obj)[1]);
@@ -45,14 +45,14 @@ const LineChart = ({ datas }) => {
       },
       title: {
         display: true,
-        text: 'Points Earned Over Time'
+        text: graphTitle
       }
     },
     scales: {
       y: {
         beginAtZero: true,
         ticks: {
-          stepSize: 1,
+          stepSize: 5,
           precision: 2,
         },
         grid: {
