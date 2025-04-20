@@ -74,7 +74,7 @@ const RecordHistory = () => {
                 <tr className="even:bg-white" key={submission?._id}>
                   <td className="text-start py-2 px-2 text-nowrap">{submission?._id}</td>
                   <td className="text-center px-2 text-nowrap">{formatName(submission?.submitted_by)}</td>
-                  <td className="text-center px-2 text-nowrap">{submission?.materials.map(mat => `${mat?.material?.name}`).join(', ')}</td>
+                  <td className="text-center px-2 text-nowrap">{submission?.materials.filter(mat => mat.weight > 0).map(mat => `${mat.material.name}`).join(', ')}</td>
                   <td className="text-center px-2 text-nowrap">{submission?.points_earned}</td>
                   <td className="text-center px-2 text-nowrap">{dayjs(submission?.created_at).utc().format('YYYY/MM/DD HH:mm:ss')}</td>
                 </tr>

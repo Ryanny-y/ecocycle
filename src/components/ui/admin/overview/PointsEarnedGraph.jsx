@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../../../utils/hooks/useFetchData";
-import LineChart from "../../../components/ui/charts/LineChart";
+import useFetchData from "../../../../utils/hooks/useFetchData";
+import LineChart from "../../charts/LineChart";
 import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData'
 

@@ -1,16 +1,8 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import getRandomColor from "../../../utils/helpers/getRandomColor";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
 const DoughnutChart = ({ staffList }) => {
 

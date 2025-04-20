@@ -22,11 +22,11 @@ const Directory = ({ staffList, farmName }) => {
         {farmStaff.length > 0 ? (
           farmStaff.map(staff => (
             <div key={staff._id} className="border border-forest relative z-10 text-black p-3 rounded-lg">
-              <p><span class="font-bold text-forest">Name:</span> {staff.name}</p>
-              <p><span class="font-bold text-forest">Age:</span> {staff.age}</p>
-              <p><span class="font-bold text-forest">Gender:</span> {staff.gender}</p>
-              <p><span class="font-bold text-forest">Position:</span> {staff.position}</p>
-              <p><span class="font-bold text-forest">Contact No:</span> {staff?.contact_number}</p>
+              <p><span className="font-bold text-forest">Name:</span> {staff.name}</p>
+              <p><span className="font-bold text-forest">Age:</span> {staff.age}</p>
+              <p><span className="font-bold text-forest">Gender:</span> {staff.gender}</p>
+              <p><span className="font-bold text-forest">Position:</span> {staff.position}</p>
+              <p><span className="font-bold text-forest">Contact No:</span> {staff?.contact_number}</p>
             </div>
           ))
         ) : (

@@ -168,7 +168,7 @@ const EcoSwap = () => {
               <p>Record ID: <span>{recordData?._id}</span></p>
               <p>Name: <span>{formatName(recordData)}</span></p>
               <p>Address: <span>{recordData?.address}</span></p>
-              <p>Contact: <span>{recordData?.contact}</span></p>
+              <p>Contact: <span>{recordData?.contact_number}</span></p>
             </div>
 
             <div className="flex flex-col gap-2 w-full sm:w-auto text-white bg-forest rounded-md p-3 items-center">

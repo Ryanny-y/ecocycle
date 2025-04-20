@@ -34,12 +34,14 @@ const Statistics = ({ staffList }) => {
     <div className="shadow-lg px-5 py-5 rounded-md flex flex-col gap-2 bg-white">
       <h1 className="text-forest font-bold text-xl">Statistics</h1>
 
-      <div className="flex flex-col">
+      {staffList && 
+        <div className="flex flex-col">
         <BarChart labels={staffLabel} data={farmCounts} title={"Member Each Farm"}/>
         <BarChart labels={allSkills} data={skillCount} title={"Skills Count"}/>
         <DoughnutChart staffList={staffList} />
-        <PieChart dataVal={genderCounts} />
+        <PieChart labels={["Male", "Female"]} title="Genders" dataVal={genderCounts} />
       </div>
+      } 
     </div>
   )
 };
